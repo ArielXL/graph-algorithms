@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://eda.matcom.uh.cu/problem/5731/camino-de-costo-minimo-ii/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="description" content="Matcom Online Grader. Programming contests, algorithms and mathematics.">
+        <meta name="keywords" content="programming algorithm contest competition informatics olympiads c++ java python graphs matcom havana habana">
+        <title>Camino de costo mínimo - II | MatCom Online Grader</title>
+        <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="http://eda.matcom.uh.cu/static/mog/images/favicon.ico">
+        <link href="http://eda.matcom.uh.cu/static/mog/plugins/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://eda.matcom.uh.cu/static/mog/css/body.min.css" rel="stylesheet">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-108230808-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-108230808-1');
+        </script>
+
+        
+            <script type="text/x-mathjax-config;executed=true">
+                MathJax.Hub.Config({
+                    extensions: ["tex2jax.js"],
+                    jax: ["input/TeX", "output/HTML-CSS"],
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        processEscapes: true
+                    },
+                    "HTML-CSS": { availableFonts: ["TeX"] }
+                });
+            </script>
+        
+
+
+
+        
+            
+        
+
+        <style>
+            .no-underline {
+                text-decoration: none !important;
+            }
+
+            /* USED IN HOME */
+            .first-post {
+                margin-top: 0 !important;
+            }
+
+            /* USED IN SUBMIT */
+            .CodeMirror {
+                border: 1px solid #DDD;
+                height: auto;
+            }
+
+            /* COMMENTS */
+            img.media-object {
+                height: 64px; width: 64px;
+            }
+
+            /* BIG TITLE IN SOME PAGES */
+            h1.title, h2.title, h3.title, h4.title, h5.title {
+                margin-top: 0 !important;
+            }
+
+            /* UNIFORM TEXT (used as small/medium titles) */
+            .uniform-text {
+                font-weight: bold;
+                color: #999;
+                text-transform: uppercase;
+            }
+
+            .uniform-text.uniform-small {  font-size: 11px; }
+            .uniform-text.uniform-medium { font-size: 13px; }
+            .uniform-text.uniform-big { font-size: 15px; }
+
+            /* MARGIN  SHORTCUTS */
+            .margin-left-0 { margin-left: 25px !important; }
+            .margin-left-5 { margin-left: 25px !important; }
+            .margin-left-10 { margin-left: 25px !important; }
+            .margin-left-15 { margin-left: 25px !important; }
+            .margin-left-20 { margin-left: 25px !important; }
+            .margin-left-25 { margin-left: 25px !important; }
+
+            .margin-top-0 { margin-top: 0px !important; }
+            .margin-top-5 { margin-top: 5px !important; }
+            .margin-top-10 { margin-top: 10px !important; }
+            .margin-top-15 { margin-top: 15px !important; }
+            .margin-top-20 { margin-top: 20px !important; }
+            .margin-top-25 { margin-top: 25px !important; }
+
+            .margin-bottom-0 { margin-bottom: 0px !important; }
+            .margin-bottom-5 { margin-bottom: 5px !important; }
+            .margin-bottom-10 { margin-bottom: 10px !important; }
+            .margin-bottom-15 { margin-bottom: 15px !important; }
+            .margin-bottom-20 { margin-bottom: 20px !important; }
+            .margin-bottom-25 { margin-bottom: 25px !important; }
+
+            .padding-0 { padding: 0 !important; }
+            .margin-0 { margin: 0 !important; }
+
+            /* Used mostly in wells */
+            .bckg-white {
+                background-color: white !important;
+            }
+
+            /* Contest Standing */
+            .problem-solved { background-color: #DFF0D8; color: #468847; }
+            .problem-failed { background-color: #F2DEDE; color: #B94A48; }
+            .problem-solved-first { background-color: #B9D4AC; color: #39703A; }
+            .contest-solved-first { background-color: #d49836; color: #704e1b; }
+
+            .token-input-list-facebook {
+                width: 100% !important;
+            }
+        </style>
+    <style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style></head>
+
+    <body><div id="MathJax_Message" style="display: none;"></div>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="http://eda.matcom.uh.cu/">Inicio</a></li>
+                        <li><a href="http://eda.matcom.uh.cu/users/">Usuarios</a></li>
+                        <li><a href="http://eda.matcom.uh.cu/problems/">Problemas</a></li>
+                        <li><a href="http://eda.matcom.uh.cu/contests/">Concursos</a></li>
+                        <li><a href="http://eda.matcom.uh.cu/posts/">Publicaciones</a></li>
+                        <li><a href="http://eda.matcom.uh.cu/submissions/">Envíos</a></li>
+                        <li><a href="http://eda.matcom.uh.cu/faq/">Ayuda</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                            ﻿
+
+
+    <li class="dropdown">
+        <a href="http://eda.matcom.uh.cu/problem/5731/camino-de-costo-minimo-ii/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            ArielXL
+            
+            <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="http://eda.matcom.uh.cu/user/messages/2562/"><i class="glyphicon glyphicon-envelope"></i> Mensajes</a></li>
+            <li class="divider"></li>
+            <li><a href="http://eda.matcom.uh.cu/user/2562/"><i class="glyphicon glyphicon-user"></i> Ver perfil</a></li>
+            <li><a href="http://eda.matcom.uh.cu/user/edit/2562/"><i class="glyphicon glyphicon-edit"></i> Editar perfil</a></li>
+            <li><a href="http://eda.matcom.uh.cu/post/create"><i class="glyphicon glyphicon-pencil"></i> Escribir publicacion</a></li>
+            <li class="divider"></li>
+            <li><a href="http://eda.matcom.uh.cu/logout/?next=/"><i class="glyphicon glyphicon-off"></i> Salir</a></li>
+        </ul>
+    </li>
+
+
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="http://eda.matcom.uh.cu/">
+                                
+                                
+                                    <img src="./Camino de costo mínimo - II   MatCom Online Grader_files/logo.png" class="img-responsive" alt="MOG">
+                                
+                            </a>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="pull-right">
+                                <form action="http://eda.matcom.uh.cu/i18n/setlang/" method="post" style="display: inline-block;">
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="4ftfuCN9nrPlQZHTtG5ZTrXMbewXBljRe2jOHlaWoLQBjg9UCc1OL2qk4XZo703A">
+                                    <input type="hidden" name="language" value="es">
+                                    <a href="javascript:;" class="no-underline" onclick="this.parentNode.submit();">
+                                        <img src="./Camino de costo mínimo - II   MatCom Online Grader_files/spa-flag.png" alt="Spanish" class="flagSizeSmall">
+                                    </a>
+                                </form>
+                                |
+                                <form action="http://eda.matcom.uh.cu/i18n/setlang/" method="post" style="display: inline-block;">
+                                    <input type="hidden" name="csrfmiddlewaretoken" value="4ftfuCN9nrPlQZHTtG5ZTrXMbewXBljRe2jOHlaWoLQBjg9UCc1OL2qk4XZo703A">
+                                    <input type="hidden" name="language" value="en">
+                                    <a href="javascript:;" class="no-underline" onclick="this.parentNode.submit();">
+                                        <img src="./Camino de costo mínimo - II   MatCom Online Grader_files/eng-flag.png" alt="English" class="flagSizeSmall">
+                                    </a>
+                                </form>
+                            </div>
+                            <h1>
+                                Matcom Online Grader<br>
+                                <small>Facultad de Matemática Computación de La Universidad de La Habana</small>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+                
+    <div class="row">
+        <div class="col-md-12">
+            
+                <div class="alert alert-info secure info alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    
+                        <p><a href="http://eda.matcom.uh.cu/user/edit/2562/">Please edit your profile and fill incomplete fields (last name, code theme, avatar)</a></p>
+                    
+                </div>
+            
+        </div>
+    </div>
+
+
+            
+
+            
+                <div class="row">
+                    <div class="col-md-3">
+                        
+    
+
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="text-center">
+                            <h3>
+                                <a href="http://eda.matcom.uh.cu/contest/problems/3137" class="no-underline">
+                                    EDA S3 14-15
+                                </a>
+                            </h3>
+
+                            
+                                
+                                    
+                                        <h5>Finalizado</h5>
+                                    
+                                
+                            
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="">
+                                <a href="http://eda.matcom.uh.cu/contest/problems/3137">
+                                    <i class="glyphicon glyphicon-list-alt"></i> Problemas
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://eda.matcom.uh.cu/contest/standing/3137">
+                                    <i class="glyphicon glyphicon-signal"></i> Posiciones
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="http://eda.matcom.uh.cu/contest/submissions/3137">
+                                    <i class="glyphicon glyphicon-road"></i> Envíos
+                                </a>
+                            </li>
+                            <li class="">
+                                
+                                    <a href="http://eda.matcom.uh.cu/submit/5731/">
+                                        <i class="glyphicon glyphicon-envelope"></i> Enviar
+                                    </a>
+                                
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+    
+</div>
+
+                    </div>
+                    <div class="col-md-9">
+                        <section>
+                            
+    <div class="row">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h3 class="title">F - Camino de costo mínimo - II</h3>
+            </div>
+
+            
+
+            <div class="col-md-12">
+                <h5>Tiempo límite: 2 segundos</h5>
+                <h5>Memoria límite: 256 megabytes</h5>
+                <h5>Languages: C#,G++
+                    
+                        <a href="http://eda.matcom.uh.cu/problem/5731/camino-de-costo-minimo-ii/#" data-html="true" data-toggle="tooltip" title="" data-placement="right" data-original-title="C#&lt;br&gt;G++&lt;br&gt;Pyton 2.7&lt;br&gt;Java&lt;br&gt;Tiger&lt;br&gt;C++11&lt;br&gt;NASM&lt;br&gt;NASM&lt;br&gt;SQLite&lt;br&gt;FSharp&lt;br&gt;Haskell&lt;br&gt;Free Pascal 2.0.4&lt;br&gt;GCC">...</a>
+                    
+                </h5>
+            </div>
+
+            <div class="col-md-12 margin-bottom-10">
+                <ul class="nav nav-pills nav-justified">
+                    <li role="presentation">
+                        <a href="http://eda.matcom.uh.cu/contest/submissions/3137?problem=Camino%20de%20costo%20m%C3%ADnimo%20-%20II">Todos los envíos</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="http://eda.matcom.uh.cu/contest/submissions/3137?problem=Camino%20de%20costo%20m%C3%ADnimo%20-%20II&result=1">
+                            Envíos aceptados
+                        </a>
+                    </li>
+                    
+                        <li role="presentation">
+                            <a href="http://eda.matcom.uh.cu/contest/submissions/3137?problem=Camino%20de%20costo%20m%C3%ADnimo%20-%20II&username=ArielXL">
+                                Mis envíos
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="http://eda.matcom.uh.cu/media/problem/pdf/5731/5731.pdf">PDF</a>
+                        </li>
+                    
+                    <li role="presentation"><a href="http://eda.matcom.uh.cu/submit/5731/">Enviar</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="body" class="col-md-12">
+            <p><not available="">
+</not>
+</p><p style="text-align:justify;">
+ Sea un grafo
+ <span style="font-family:&#39;Courier New&#39;;">
+  G = &lt;V, E&gt;
+ </span>
+ no dirigido, conexo y ponderado, con función de costo
+ <span style="font-family:&#39;Courier New&#39;;">
+  w: E-&gt;R
+  <sup>
+   +
+  </sup>
+ </span>
+ , usted debe determinar un camino mínimo entre dos vértices
+ <span style="font-family:&#39;Courier New&#39;;">
+  A
+ </span>
+ y
+ <span style="font-family:&#39;Courier New&#39;;">
+  B
+ </span>
+ de G.
+ <strong>
+  Si múltiples respuestas existen, proporcione un camino que minimice adicionalmente la cantidad de aristas
+ </strong>
+ .
+</p><p></p>
+        </div>
+
+        <div id="input" class="col-md-12">
+            <h4 class="text-center">Entrada</h4>
+            <p><not available="">
+</not>
+<span style="text-decoration:underline;">
+ <span style="font-size:11.0pt;line-height:115%;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;;">
+  Línea 1
+ </span>
+</span>
+<span style="font-size:11.0pt;line-height:115%;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;;">
+ : Cuatro enteros separados por espacio N, M, A y B; la cantidad de vértices, la cantidad de aristas, el vértice inicial y final respectivamente (1 ≤ N ≤ 200000, N - 1 ≤ M ≤ 500000, 1≤ A, B≤ N).
+ <br>
+ <span style="text-decoration:underline;">
+  Línea 2 – M + 1
+ </span>
+ : Tres enteros separados por espacio u, w y C indicando que existe la arista u~w (1 ≤ u, w ≤ N) con costo C (1 ≤ C ≤ 100000).
+ <strong>
+  Entre cada par de vértices hay a lo sumo una arista
+ </strong>
+ .
+</span></p>
+        </div>
+
+        <div id="output" class="col-md-12">
+            <h4 class="text-center">Salida</h4>
+            <p><not available="">
+</not>
+<span style="text-decoration:underline;">
+ <span style="font-size:11.0pt;line-height:115%;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;;">
+  Línea 1
+ </span>
+</span>
+<span style="font-size:11.0pt;line-height:115%;font-family:&#39;Calibri&#39;,&#39;sans-serif&#39;;">
+ : Un entero K, la cantidad de nodos en el camino mínimo de A hasta B.
+ <br>
+ <span style="text-decoration:underline;">
+  Línea 2
+ </span>
+ : Los identificadores de K nodos separados por espacio, representando el camino mínimo desde A hasta B.
+ <strong>
+  El primer y último nodo en este camino deben ser A y B respectivamente
+ </strong>
+ .
+</span></p>
+        </div>
+
+        <div id="tests" class="col-md-12">
+            <h4 class="text-center">Caso(s) de ejemplo</h4>
+
+            <div class="sample-tests">
+                
+                    <div class="sample-test">
+                        <div class="input">
+                            <div class="title">Entrada</div>
+                            <div class="pre"><span class="text">5 6 1 3
+1 4 10
+1 5 12
+4 2 1
+4 3 8
+5 2 4
+3 2 7
+</span></div>
+                        </div>
+                        <div class="output">
+                            <div class="title">Salida</div>
+                            <div class="pre"><span class="text">3
+1 4 3
+</span></div>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+
+        
+            <div id="hints" class="col-md-12">
+                <h4 class="text-center">Pistas</h4>
+                <p style="text-align:justify;">
+ <strong>
+  Hint
+  <br>
+ </strong>
+ Existen tres caminos simples desde 1 hasta 3, dos caminos tienen costo mínimo 1 – 4 – 3 y 1 – 4 – 2 – 3, ambos con valor 18, no obstante el camino 1 – 4 – 3 tiene solamente dos aristas, luego, esta es la solución.
+</p>
+<p style="text-align:justify;">
+ <img alt="" class="img-responsive" src="./Camino de costo mínimo - II   MatCom Online Grader_files/images_5.png">
+ <strong>
+ </strong>
+</p>
+            </div>
+        
+    </div>
+
+    
+
+                        </section>
+                    </div>
+                </div>
+            
+
+            <hr>
+
+            <footer>
+                <div class="center">
+                    <p>© 2018 - MOG Version: 3.0 (<strong>BETA</strong>)</p>
+                    <p>Grader Version: 2.0.0.22</p>
+                    <p>Server Time: 8th Mayo 2018 09:15</p>
+                    <p>
+                        <a href="https://www.facebook.com/MatcomOnlineGrader" target="_blank" style="text-decoration: none;">
+                            <img src="./Camino de costo mínimo - II   MatCom Online Grader_files/fl.png" class="margin-right-5">
+                        </a>
+                        <a href="https://twitter.com/MatcomGrader" target="_blank" style="text-decoration: none;">
+                            <img src="./Camino de costo mínimo - II   MatCom Online Grader_files/tl.png" class="margin-left-5">
+                        </a>
+                    </p>
+                </div>
+            </footer>
+        </div>
+
+        <script type="text/javascript" src="./Camino de costo mínimo - II   MatCom Online Grader_files/jquery-3.1.0.min.js"></script>
+        <script type="text/javascript" src="./Camino de costo mínimo - II   MatCom Online Grader_files/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./Camino de costo mínimo - II   MatCom Online Grader_files/mog.js"></script>
+
+
+        
+    <script type="text/javascript" async="" src="./Camino de costo mínimo - II   MatCom Online Grader_files/MathJax.js">
+    </script>
+    <script type="text/x-mathjax-config;executed=true">
+        MathJax.Hub.Config({messageStyle: "none"});
+    </script>
+
+
+        <script>
+            $(document).ready(function () {
+                 $('[data-toggle="tooltip"]').tooltip();
+                 $('[data-toggle="popover"]').popover();
+                if (window.MOG !== undefined)
+                    window.MOG.initializeSummernote(false);
+            });
+        </script>
+    
+</body></html>
