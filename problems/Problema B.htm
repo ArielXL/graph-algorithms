@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Problema B</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Problema%20B_files/css.css" rel="stylesheet">
+    <script src="Problema%20B_files/jquery-1.js"></script>
+<script src="Problema%20B_files/jquery-migrate-1.js"></script>
+
+    
+    
+
+       <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/scripts/html5shiv.js"></script>
+    <![endif]-->
+
+	
+	<!-- MathJax -->
+<script type="text/x-mathjax-config;executed=true">
+  MathJax.Hub.Config({    
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+<script type="text/javascript" src="Problema%20B_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style>
+        
+		
+		
+</head>
+<body><div style="display: none;" id="MathJax_Message"></div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+						<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">MOG<b class="caret"></b></a><ul class="dropdown-menu"><li></li><li><a href="http://judge.matcom.uh.cu/arena/home/1">ACM-ICPC Arena</a></li><li></li><li><a href="http://judge.matcom.uh.cu/asm/home/1">Programación de Máquinas I</a></li><li></li><li><a href="http://judge.matcom.uh.cu/db/home/1">Base de Datos</a></li><li></li><li><a href="http://judge.matcom.uh.cu/eda/home/1">Estructuras de Datos y Algoritmos</a></li><li></li><li><a href="http://judge.matcom.uh.cu/home/1">ACM-ICPC</a></li><li></li><li><a href="http://judge.matcom.uh.cu/pf/home/1">Programación Funcional</a></li><li></li><li><a href="http://judge.matcom.uh.cu/prac/home/1">Prácticas de Producción</a></li><li></li><li><a href="http://judge.matcom.uh.cu/prog/home/1">Programación</a></li></ul></li>;
+                        <li><a href="http://judge.matcom.uh.cu/eda/home">Home</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/users/1">Users</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/problems/1">Problems</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/contests/1">Contests</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/posts/1">Posts</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/submissions/">Submissions</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/faq">F.A.Q.</a></li>
+                    </ul>
+                    <ul class="nav pull-right">
+                        
+                        
+<li class="divider-vertical"></li>
+    <li>
+        <a href="http://judge.matcom.uh.cu/eda/login?returnUrl=%2Feda%2Fcontest%2FEDAII1314P1%2FB" id="loginLink">Log in</a>
+    </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="page-header">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <a href="http://judge.matcom.uh.cu/eda/home">
+                            <img src="Problema%20B_files/logo.gif">
+                        </a>
+                    </div>
+                    <div class="span9">
+                        <div class="pull-right">
+                            <a href="http://judge.matcom.uh.cu/eda/localization/changeculture/es?returnUrl=%2Feda%2Fcontest%2FEDAII1314P1%2FB">
+                                <img src="Problema%20B_files/Spain-flag.png" alt="Spanish" class="flagSizeSmall"></a> |
+                            <a href="http://judge.matcom.uh.cu/eda/localization/changeculture?returnUrl=%2Feda%2Fcontest%2FEDAII1314P1%2FB">
+                                <img src="Problema%20B_files/USA-flag.png" alt="English" class="flagSizeSmall"></a>
+                        </div>
+                        <h1>Matcom Online Grader
+                                 <br>
+                            <small>Faculty of Mathematics and Computer Science of University of Havana</small>
+                        </h1>
+                            <h3>Estructuras de Datos y Algoritmos</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            
+            
+        </div>
+        <div class="row-fluid">
+            
+
+
+<div class="span3">
+    <div class="sidebar-nav">
+        <ul class="nav nav-list">
+            <div class="sidebar-nav">
+    <div class="nav-header">
+            Contest
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <tbody><tr>
+                <td>
+                    <h3 class="center"><a href="http://judge.matcom.uh.cu/eda/contest/EDAII1314P1">Examen Intra Parte1 EDAII 13-14</a></h3>
+                        <h5 class="center">Ended</h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="nav nav-list">
+                        <li class="active"><a href="http://judge.matcom.uh.cu/eda/contest/EDAII1314P1"><i class="icon-list-alt"></i>Problems</a></li>
+                        <li class=""><a href="http://judge.matcom.uh.cu/eda/contest/EDAII1314P1/standings"><i class="icon-signal"></i>Standings</a></li>
+                        <li class=""><a href="http://judge.matcom.uh.cu/eda/contest/EDAII1314P1/submissions/"><i class="icon-road"></i>Submissions</a></li>
+                        <li class=""><a href="http://judge.matcom.uh.cu/eda/contest/EDAII1314P1/submit/B"><i class="icon-envelope"></i>Submit</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+</div>
+
+        </ul>
+    </div>
+</div>
+
+<div class="span9">
+    <section>
+        
+
+<div class="row-fluid">
+</div>
+
+<div class="statement">
+    
+    <h3>B - Problema B</h3>
+    <h5>Time Limit: 2 second(s)</h5>
+    <h5>Memory Limit: 256 megabytes</h5>
+   
+    <ul class="nav nav-pills">
+        <li class="active"><a href="">Statement</a></li>
+        <li><a href="http://judge.matcom.uh.cu/eda/contest/EDAII1314P1/submissions/problem/B">All Submissions</a></li>
+        <li><a href="http://judge.matcom.uh.cu/eda/contest/EDAII1314P1/submissions/problem/B/result/accepted">Accepted Submissions</a></li>
+        <li><a href="http://judge.matcom.uh.cu/eda/problem/EDAII1314P1B/pdf">Download PDF</a></li>
+
+        <li><a href="http://judge.matcom.uh.cu/eda/contest/EDAII1314P1/submit/B">Submit</a></li>
+    </ul>
+    
+    <div style="text-align:justify;"><not available=""></not>Sea un grafo G = &lt;V, E&gt; no dirigido, conexo y con función de costo <span style="font-family:'Courier New', Courier, monospace;">w: E -&gt; R+</span>.
+ Considere dos conjuntos no vacíos A y B subconjuntos de V tal que |A∩B|
+ = 0. Halle el camino de menor costo desde algún vértice de A hacia 
+algún vértice de B.</div>
+    <br>
+
+    <h4>Input</h4>
+    <not available=""></not><span style="text-decoration:underline;"></span><span style="text-decoration:underline;">Línea 1</span>: Dos enteros separados por espacio N, M; la cantidad de vértices y la cantidad de aristas respectivamente.<br><span style="text-decoration:underline;">Línea 2</span>:
+ Dos enteros positivos separados por espacio As y Bs indicando la 
+cantidad de elementos del conjunto A y del conjunto B respectivamente.<br><span style="text-decoration:underline;">Línea 3</span>: As enteros separados por espacio, los identificadores de los nodos del conjunto A.<br><span style="line-height:1.5;"><span style="text-decoration:underline;">Línea 4</span>: Bs enteros separados por espacio, los identificadores de los nodos del conjunto B.<br></span><span style="line-height:1.5;text-decoration:underline;">Línea 5 – M + 4</span><span style="line-height:1.5;">: Tres enteros separados por espacio A, B y C indicando que existe la arista A-B con costo C (1 &lt;= A, B &lt;= N).</span><strong style="line-height:1.5;">&nbsp;Entre cada par de vértices hay a lo sumo una arista</strong><span style="line-height:1.5;">.</span>
+    <br>
+
+    <h4>Output</h4>
+    <div style="text-align:justify;"><not available=""></not>La primera 
+línea de la salida contendrá el menor costo de algún camino de un 
+vértice en A hacia un vértice en B. La segunda línea contendrá la 
+cantidad de vértices en dicho camino. La tercera y última línea 
+contendrá el camino. <strong>El primer y último vértice del camino deben pertenecer al conjunto A y al conjunto B respectivamente o viceversa</strong>.</div>
+    <br>
+
+    <h4>Sample test(s)</h4>
+
+    <aside>
+        <div class="sample-tests">
+        <div class="sample-test">
+            <div class="input">
+                <div class="title">Input</div>
+                <div class="pre">
+                    <span class="text">11 15
+4 3
+10 8 1 6
+2 9 5
+5 1 20
+1 4 7
+7 1 8
+2 6 13
+2 11 7
+2 3 22
+2 9 2
+3 9 13
+4 8 1
+7 4 2
+4 11 2
+4 9 10
+5 6 40
+8 10 1
+8 9 12
+</span>
+                </div>
+            </div>
+            <div class="output">
+                <div class="title">Output</div>
+                <div class="pre">
+                    <span class="text">10
+4
+2 11 4 8 
+</span>
+                </div>
+            </div>
+        </div>
+
+</div>
+    </aside>
+
+    <p><strong>Hint</strong></p><p><img alt="" src="Problema%20B_files/EDAII1314P1C.png"></p>
+</div>
+
+<div id="deleteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="deleteModalLabel">Delete</h3>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete this item</p>
+    </div>
+    <div class="modal-footer">
+        <form novalidate="novalidate" id="deleteFormModal" method="POST">
+            <button class="btn btn-danger" type="submit">Delete</button>
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        </form>
+    </div>
+</div>
+
+    </section>
+</div>
+
+
+        </div>
+        <hr>
+        <footer>
+            <div class="center">
+                <p>© 2016 - MOG Version: 2.0.0.14</p>
+                <p>Grader Version: 2.0.0.22</p>
+                <p>Server Time: 4/25/2016 5:18:27 PM</p>
+            </div>
+        </footer>
+    </div>
+    <script src="Problema%20B_files/jquery_002.js"></script>
+<script src="Problema%20B_files/jquery.js"></script>
+<script src="Problema%20B_files/jquery_004.js"></script>
+<script src="Problema%20B_files/bootstrap.js"></script>
+<script src="Problema%20B_files/jquery_003.js"></script>
+<script src="Problema%20B_files/site.js"></script>
+
+    
+    
+
+    
+
+
+
+</body></html>
