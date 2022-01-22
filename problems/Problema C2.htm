@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Problema C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Problema%20C_files/css.css" rel="stylesheet">
+    <script src="Problema%20C_files/jquery-1.js"></script>
+<script src="Problema%20C_files/jquery-migrate-1.js"></script>
+
+    
+    
+
+       <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/scripts/html5shiv.js"></script>
+    <![endif]-->
+
+	
+	<!-- MathJax -->
+<script type="text/x-mathjax-config;executed=true">
+  MathJax.Hub.Config({    
+    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+  });
+</script>
+<script type="text/javascript" src="Problema%20C_files/MathJax.js"></script>
+        
+		
+		
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; border: 0; padding: 0; margin: 0}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0 !important; padding: 0 !important; margin: 0 !important; vertical-align: 0 !important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap ! important}
+.MathJax img {display: inline ! important; float: none ! important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block; overflow: hidden; width: 1px; height: 60ex}
+.MathJax .MathJax_EmBox {display: block; overflow: hidden; width: 1px; height: 60em}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff') format('woff'), url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf') format('opentype')}
+@font-face {font-family: MathJax_Main; src: url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff') format('woff'), url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf') format('opentype'); font-weight: bold}
+@font-face {font-family: MathJax_Main; src: url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff') format('woff'), url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf') format('opentype'); font-style: italic}
+@font-face {font-family: MathJax_Math; src: url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff') format('woff'), url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf') format('opentype'); font-style: italic}
+@font-face {font-family: MathJax_Caligraphic; src: url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff') format('woff'), url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff') format('woff'), url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff') format('woff'), url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff') format('woff'), url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff') format('woff'), url('http://judge.matcom.uh.cu/Scripts/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px none; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div style="display: none;" id="MathJax_Message"></div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+						<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">MOG<b class="caret"></b></a><ul class="dropdown-menu"><li></li><li><a href="http://judge.matcom.uh.cu/arena/home/1">ACM-ICPC Arena</a></li><li></li><li><a href="http://judge.matcom.uh.cu/asm/home/1">Programación de Máquinas I</a></li><li></li><li><a href="http://judge.matcom.uh.cu/db/home/1">Base de Datos</a></li><li></li><li><a href="http://judge.matcom.uh.cu/eda/home/1">Estructuras de Datos y Algoritmos</a></li><li></li><li><a href="http://judge.matcom.uh.cu/home/1">ACM-ICPC</a></li><li></li><li><a href="http://judge.matcom.uh.cu/pf/home/1">Programación Funcional</a></li><li></li><li><a href="http://judge.matcom.uh.cu/prac/home/1">Prácticas de Producción</a></li><li></li><li><a href="http://judge.matcom.uh.cu/prog/home/1">Programación</a></li></ul></li>;
+                        <li><a href="http://judge.matcom.uh.cu/eda/home">Inicio</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/users/1">Usuarios</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/problems/1">Problemas</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/contests/1">Concursos</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/posts/1">Publicaciones</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/submissions/">Envíos</a></li>
+                        <li><a href="http://judge.matcom.uh.cu/eda/faq">F.A.Q.</a></li>
+                    </ul>
+                    <ul class="nav pull-right">
+                        
+                        
+<li class="divider-vertical"></li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Vivian 
+        <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="http://judge.matcom.uh.cu/eda/inbox/1"><i class="icon-inbox"></i>Bandeja de Entrada </a></li>
+            <li><a href="http://judge.matcom.uh.cu/eda/outbox/1"><i class="icon-share"></i>Bandeja de Salida</a></li>
+
+            <li class="divider"></li>
+            <li><a href="http://judge.matcom.uh.cu/eda/user/Vivian"><i class="icon-user"></i>Perfil</a></li>
+            <li><a href="http://judge.matcom.uh.cu/eda/user/Vivian/edit"><i class="icon-edit"></i>Editar Perfil</a></li>
+            <li><a href="http://judge.matcom.uh.cu/eda/posts/create"><i class="icon-pencil"></i>Añadir Contenido</a></li>
+            <li class="divider"></li>
+
+            <li><a href="http://judge.matcom.uh.cu/eda/logoff">Cerrar Sesión</a> </li>
+        </ul>
+    </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="page-header">
+                <div class="row-fluid">
+                    <div class="span3">
+                        <a href="http://judge.matcom.uh.cu/eda/home">
+                            <img src="Problema%20C_files/logo.gif">
+                        </a>
+                    </div>
+                    <div class="span9">
+                        <div class="pull-right">
+                            <a href="http://judge.matcom.uh.cu/eda/localization/changeculture/es?returnUrl=%2Feda%2Fcontest%2FEDAII15162S%2FC">
+                                <img src="Problema%20C_files/Spain-flag.png" alt="Spanish" class="flagSizeSmall"></a> |
+                            <a href="http://judge.matcom.uh.cu/eda/localization/changeculture?returnUrl=%2Feda%2Fcontest%2FEDAII15162S%2FC">
+                                <img src="Problema%20C_files/USA-flag.png" alt="English" class="flagSizeSmall"></a>
+                        </div>
+                        <h1>Matcom Online Grader
+                                 <br>
+                            <small>Facultad de Matemática y Computación de la Universidad de La Habana</small>
+                        </h1>
+                            <h3>Estructuras de Datos y Algoritmos</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            
+            
+        </div>
+        <div class="row-fluid">
+            
+
+
+<div class="span3">
+    <div class="sidebar-nav">
+        <ul class="nav nav-list">
+            <div class="sidebar-nav">
+    <div class="nav-header">
+            Concurso
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <tbody><tr>
+                <td>
+                    <h3 class="center"><a href="http://judge.matcom.uh.cu/eda/contest/EDAII15162S">Examen Intra EDAII 15-16 2S</a></h3>
+                        <h5 class="center">Finalizado</h5>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul class="nav nav-list">
+                        <li class="active"><a href="http://judge.matcom.uh.cu/eda/contest/EDAII15162S"><i class="icon-list-alt"></i>Problemas</a></li>
+                        <li class=""><a href="http://judge.matcom.uh.cu/eda/contest/EDAII15162S/standings"><i class="icon-signal"></i>Posiciones</a></li>
+                        <li class=""><a href="http://judge.matcom.uh.cu/eda/contest/EDAII15162S/submissions/"><i class="icon-road"></i>Envíos</a></li>
+                        <li class=""><a href="http://judge.matcom.uh.cu/eda/contest/EDAII15162S/submit/C"><i class="icon-envelope"></i>Enviar</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+</div>
+
+        </ul>
+    </div>
+</div>
+
+<div class="span9">
+    <section>
+        
+
+<div class="row-fluid">
+</div>
+
+<div class="statement">
+    
+    <h3>C - Problema C</h3>
+    <h5>Tiempo Límite: 4 segundo(s)</h5>
+    <h5>Límite de Memoria: 256 megabytes</h5>
+   
+    <ul class="nav nav-pills">
+        <li class="active"><a href="">Descripción</a></li>
+        <li><a href="http://judge.matcom.uh.cu/eda/contest/EDAII15162S/submissions/problem/C">Todos los envios</a></li>
+        <li><a href="http://judge.matcom.uh.cu/eda/contest/EDAII15162S/submissions/problem/C/result/accepted">Envíos Aceptados</a></li>
+        <li><a href="http://judge.matcom.uh.cu/eda/problem/EDAII15162SC/pdf">Descargar PDF</a></li>
+
+            <li><a href="http://judge.matcom.uh.cu/eda/contest/EDAII15162S/submissions/problem/C/user/Vivian">Mis Envíos</a></li>
+        <li><a href="http://judge.matcom.uh.cu/eda/contest/EDAII15162S/submit/C">Enviar</a></li>
+    </ul>
+    
+    Dado un grafo dirigido, acíclico y ponderado, usted debe imprimir el costo del camino de mayor costo del mismo.<not available=""></not>
+    <br>
+
+    <h4>Entrada</h4>
+    <p>La primera línea de la entrada contiene 2 enteros, <span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-1-Frame" class="MathJax"><nobr><span style="width: 1.161em; display: inline-block;" id="MathJax-Span-1" class="math"><span style="display: inline-block; position: relative; width: 0.866em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.373em, 1000em, 2.381em, -0.456em); top: -2.219em; left: 0em;"><span id="MathJax-Span-2" class="mrow"><span style="font-family: MathJax_Math; font-style: italic;" id="MathJax-Span-3" class="mi">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.085em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 1.044em; vertical-align: -0.071em;"></span></span></nobr></span><script id="MathJax-Element-1" type="math/tex">N</script> (<span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-2-Frame" class="MathJax"><nobr><span style="width: 9.089em; display: inline-block;" id="MathJax-Span-4" class="math"><span style="display: inline-block; position: relative; width: 6.872em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.373em, 1000em, 2.519em, -0.404em); top: -2.219em; left: 0em;"><span id="MathJax-Span-5" class="mrow"><span style="font-family: MathJax_Main;" id="MathJax-Span-6" class="mn">1</span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-7" class="mo">≤</span><span style="font-family: MathJax_Math; font-style: italic; padding-left: 0.278em;" id="MathJax-Span-8" class="mi">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.085em;"></span></span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-9" class="mo">≤</span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-10" class="mn">100000</span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 1.227em; vertical-align: -0.254em;"></span></span></nobr></span><script id="MathJax-Element-2" type="math/tex">1 \le N \le 100000</script>) y <span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-3-Frame" class="MathJax"><nobr><span style="width: 1.375em; display: inline-block;" id="MathJax-Span-11" class="math"><span style="display: inline-block; position: relative; width: 1.028em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.373em, 1000em, 2.381em, -0.452em); top: -2.219em; left: 0em;"><span id="MathJax-Span-12" class="mrow"><span style="font-family: MathJax_Math; font-style: italic;" id="MathJax-Span-13" class="mi">M<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.081em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 1.044em; vertical-align: -0.071em;"></span></span></nobr></span><script id="MathJax-Element-3" type="math/tex">M</script> (<span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-4-Frame" class="MathJax"><nobr><span style="width: 9.304em; display: inline-block;" id="MathJax-Span-14" class="math"><span style="display: inline-block; position: relative; width: 7.035em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.373em, 1000em, 2.519em, -0.448em); top: -2.219em; left: 0em;"><span id="MathJax-Span-15" class="mrow"><span style="font-family: MathJax_Main;" id="MathJax-Span-16" class="mn">0</span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-17" class="mo">≤</span><span style="font-family: MathJax_Math; font-style: italic; padding-left: 0.278em;" id="MathJax-Span-18" class="mi">M<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.081em;"></span></span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-19" class="mo">≤</span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-20" class="mn">100000</span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 1.227em; vertical-align: -0.254em;"></span></span></nobr></span><script id="MathJax-Element-4" type="math/tex">0 \le M \le 100000</script>) que representan la cantidad de vértices y la cantidad de aristas del grafo respectivamente.</p><p>Las siguientes <span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-5-Frame" class="MathJax"><nobr><span style="width: 1.375em; display: inline-block;" id="MathJax-Span-21" class="math"><span style="display: inline-block; position: relative; width: 1.028em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.373em, 1000em, 2.381em, -0.452em); top: -2.219em; left: 0em;"><span id="MathJax-Span-22" class="mrow"><span style="font-family: MathJax_Math; font-style: italic;" id="MathJax-Span-23" class="mi">M<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.081em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 1.044em; vertical-align: -0.071em;"></span></span></nobr></span><script id="MathJax-Element-5" type="math/tex">M</script> líneas contienen 3 enteros cada una: <span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-6-Frame" class="MathJax"><nobr><span style="width: 0.732em; display: inline-block;" id="MathJax-Span-24" class="math"><span style="display: inline-block; position: relative; width: 0.541em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.614em, 1000em, 2.392em, -0.466em); top: -2.219em; left: 0em;"><span id="MathJax-Span-25" class="mrow"><span style="font-family: MathJax_Math; font-style: italic;" id="MathJax-Span-26" class="mi">u</span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.741em; vertical-align: -0.086em;"></span></span></nobr></span><script id="MathJax-Element-6" type="math/tex">u</script>, <span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-7-Frame" class="MathJax"><nobr><span style="width: 0.661em; display: inline-block;" id="MathJax-Span-27" class="math"><span style="display: inline-block; position: relative; width: 0.487em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.613em, 1000em, 2.392em, -0.466em); top: -2.219em; left: 0em;"><span id="MathJax-Span-28" class="mrow"><span style="font-family: MathJax_Math; font-style: italic;" id="MathJax-Span-29" class="mi">v</span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.742em; vertical-align: -0.086em;"></span></span></nobr></span><script id="MathJax-Element-7" type="math/tex">v</script> (<span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-8-Frame" class="MathJax"><nobr><span style="width: 10.875em; display: inline-block;" id="MathJax-Span-30" class="math"><span style="display: inline-block; position: relative; width: 8.225em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.34em, 1000em, 2.596em, -0.404em); top: -2.219em; left: 0em;"><span id="MathJax-Span-31" class="mrow"><span style="font-family: MathJax_Main;" id="MathJax-Span-32" class="mn">1</span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-33" class="mo">≤</span><span style="font-family: MathJax_Math; font-style: italic; padding-left: 0.278em;" id="MathJax-Span-34" class="mi">u</span><span style="font-family: MathJax_Main;" id="MathJax-Span-35" class="mo">,</span><span style="font-family: MathJax_Math; font-style: italic; padding-left: 0.167em;" id="MathJax-Span-36" class="mi">v</span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-37" class="mo">≤</span><span style="font-family: MathJax_Math; font-style: italic; padding-left: 0.278em;" id="MathJax-Span-38" class="mi">N<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.085em;"></span></span><span style="font-family: MathJax_Main;" id="MathJax-Span-39" class="mo">,</span><span style="font-family: MathJax_Math; font-style: italic; padding-left: 0.167em;" id="MathJax-Span-40" class="mi">u</span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-41" class="mo">≠</span><span style="font-family: MathJax_Math; font-style: italic; padding-left: 0.278em;" id="MathJax-Span-42" class="mi">v</span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 1.372em; vertical-align: -0.355em;"></span></span></nobr></span><script id="MathJax-Element-8" type="math/tex">1\le u,v \le N, u \neq v</script>) y <span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-9-Frame" class="MathJax"><nobr><span style="width: 0.589em; display: inline-block;" id="MathJax-Span-43" class="math"><span style="display: inline-block; position: relative; width: 0.433em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.614em, 1000em, 2.392em, -0.453em); top: -2.219em; left: 0em;"><span id="MathJax-Span-44" class="mrow"><span style="font-family: MathJax_Math; font-style: italic;" id="MathJax-Span-45" class="mi">c</span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.741em; vertical-align: -0.086em;"></span></span></nobr></span><script id="MathJax-Element-9" type="math/tex">c</script> (<span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-10-Frame" class="MathJax"><nobr><span style="width: 7.946em; display: inline-block;" id="MathJax-Span-46" class="math"><span style="display: inline-block; position: relative; width: 6.006em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.39em, 1000em, 2.519em, -0.404em); top: -2.219em; left: 0em;"><span id="MathJax-Span-47" class="mrow"><span style="font-family: MathJax_Main;" id="MathJax-Span-48" class="mn">1</span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-49" class="mo">≤</span><span style="font-family: MathJax_Math; font-style: italic; padding-left: 0.278em;" id="MathJax-Span-50" class="mi">c</span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-51" class="mo">≤</span><span style="font-family: MathJax_Main; padding-left: 0.278em;" id="MathJax-Span-52" class="mn">10000</span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 1.204em; vertical-align: -0.254em;"></span></span></nobr></span><script id="MathJax-Element-10" type="math/tex">1 \le c \le 10000</script>) que indican la existencia de un arco de <span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-11-Frame" class="MathJax"><nobr><span style="width: 0.732em; display: inline-block;" id="MathJax-Span-53" class="math"><span style="display: inline-block; position: relative; width: 0.541em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.614em, 1000em, 2.392em, -0.466em); top: -2.219em; left: 0em;"><span id="MathJax-Span-54" class="mrow"><span style="font-family: MathJax_Math; font-style: italic;" id="MathJax-Span-55" class="mi">u</span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.741em; vertical-align: -0.086em;"></span></span></nobr></span><script id="MathJax-Element-11" type="math/tex">u</script> hacia <span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-12-Frame" class="MathJax"><nobr><span style="width: 0.661em; display: inline-block;" id="MathJax-Span-56" class="math"><span style="display: inline-block; position: relative; width: 0.487em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.613em, 1000em, 2.392em, -0.466em); top: -2.219em; left: 0em;"><span id="MathJax-Span-57" class="mrow"><span style="font-family: MathJax_Math; font-style: italic;" id="MathJax-Span-58" class="mi">v</span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.742em; vertical-align: -0.086em;"></span></span></nobr></span><script id="MathJax-Element-12" type="math/tex">v</script> de costo <span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-13-Frame" class="MathJax"><nobr><span style="width: 0.589em; display: inline-block;" id="MathJax-Span-59" class="math"><span style="display: inline-block; position: relative; width: 0.433em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.614em, 1000em, 2.392em, -0.453em); top: -2.219em; left: 0em;"><span id="MathJax-Span-60" class="mrow"><span style="font-family: MathJax_Math; font-style: italic;" id="MathJax-Span-61" class="mi">c</span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.741em; vertical-align: -0.086em;"></span></span></nobr></span><script id="MathJax-Element-13" type="math/tex">c</script>.<not available=""></not></p>
+    <br>
+
+    <h4>Salida</h4>
+    Se debe imprimir un único entero <span class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" id="MathJax-Element-14-Frame" class="MathJax"><nobr><span style="width: 0.875em; display: inline-block;" id="MathJax-Span-62" class="math"><span style="display: inline-block; position: relative; width: 0.649em; height: 0px; font-size: 132%;"><span style="position: absolute; clip: rect(1.351em, 1000em, 2.403em, -0.435em); top: -2.219em; left: 0em;"><span id="MathJax-Span-63" class="mrow"><span style="font-family: MathJax_Math; font-style: italic;" id="MathJax-Span-64" class="mi">S<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.032em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.219em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 1.102em; vertical-align: -0.1em;"></span></span></nobr></span><script id="MathJax-Element-14" type="math/tex">S</script>, el costo del camino de mayor costo del grafo de la entrada.<not available=""></not>
+    <br>
+
+    <h4>Caso(s) de Ejemplo</h4>
+
+    <aside>
+        <div class="sample-tests">
+        <div class="sample-test">
+            <div class="input">
+                <div class="title">Entrada</div>
+                <div class="pre">
+                    <span class="text">4 3
+1 2 1
+2 4 1
+1 3 3
+</span>
+                </div>
+            </div>
+            <div class="output">
+                <div class="title">Salida</div>
+                <div class="pre">
+                    <span class="text">3
+</span>
+                </div>
+            </div>
+        </div>
+
+</div>
+    </aside>
+
+    
+</div>
+
+<div id="deleteModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="deleteModalLabel">Eliminar</h3>
+    </div>
+    <div class="modal-body">
+        <p>Seguro que quiere eliminar este elemento</p>
+    </div>
+    <div class="modal-footer">
+        <form novalidate="novalidate" id="deleteFormModal" method="POST">
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+    </section>
+</div>
+
+
+        </div>
+        <hr>
+        <footer>
+            <div class="center">
+                <p>© 2016 - MOG Version: 2.0.0.14</p>
+                <p>Grader Version: 2.0.0.22</p>
+                <p>Server Time: 5/13/2016 11:25:11 AM</p>
+            </div>
+        </footer>
+    </div>
+    <script src="Problema%20C_files/jquery_002.js"></script>
+<script src="Problema%20C_files/jquery.js"></script>
+<script src="Problema%20C_files/jquery_004.js"></script>
+<script src="Problema%20C_files/bootstrap.js"></script>
+<script src="Problema%20C_files/jquery_003.js"></script>
+<script src="Problema%20C_files/site.js"></script>
+
+    
+    
+
+    
+
+
+
+<div style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px none; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-size-adjust: none; font-family: &quot;MathJax_Main&quot;,sans-serif;" id="MathJax_Font_Test"></div></body></html>
