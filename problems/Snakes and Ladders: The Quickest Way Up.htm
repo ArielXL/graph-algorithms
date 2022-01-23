@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html style="--font-family-text:OpenSans; --font-family-input:SourceCodePro;" lang="en-us"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+    
+  <title> HackerRank </title><meta name="description" id="meta-description" content="Join over 2 million developers in solving code challenges on HackerRank, one of the best ways to prepare for programming interviews."><meta property="og:title" id="meta-og-title" content="HackerRank"><meta property="og:image" id="meta-og-image" content="https://hrcdn.net/og/default.jpg"><meta property="og:description" id="meta-og-description" content="Join over 2 million developers in solving code challenges on HackerRank, one of the best ways to prepare for programming interviews."><meta property="og:url" content="https://www.hackerrank.com/challenges/the-quickest-way-up/problem"><meta property="og:site_name" content="HackerRank"><meta property="og:type" id="meta-og-type" content="website"><meta property="article:author" content="https://www.facebook.com/hackerrank"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@hackerrank"><meta name="twitter:url" content="https://www.hackerrank.com/challenges/the-quickest-way-up/problem"><meta name="twitter:title" id="meta-twitter-title" content="HackerRank"><meta property="fb:app_id" content="347499128655783"><meta content="authenticity_token" name="csrf-param" id="csrf-param"><meta content="bUTHD7DTuU3LytRMqxEuSyirgimyocI7jUUd2MFjqmfpK91dlm+LCwcQPg5p1Mb12ZYMQO82kiff1c29M5+gXQ==" name="csrf-token" id="csrf-token">
+  <script data-cfasync="false" charset="UTF-8" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/ef_002.js"></script><script data-cfasync="false" charset="UTF-8" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/ec.js"></script><script type="text/javascript" async="" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/mixpanel-2-latest.js"></script><script type="text/javascript" async="" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/ga_002.js"></script><script data-cfasync="false" charset="UTF-8" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/ef.js"></script><script data-cfasync="false" charset="UTF-8" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/ec_002.js"></script><script type="text/javascript" async="" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/mixpanel-2-latest.htm"></script><script type="text/javascript" async="" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/ga.js"></script><script>/*!
+ * JavaScript Cookie v2.1.3
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader = false;
+	if (typeof define === 'function' && define.amd) {
+		define(factory);
+		registeredInModuleLoader = true;
+	}
+	if (typeof exports === 'object') {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function init (converter) {
+		function api (key, value, attributes) {
+			var result;
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			// Write
+
+			if (arguments.length > 1) {
+				attributes = extend({
+					path: '/'
+				}, api.defaults, attributes);
+
+				if (typeof attributes.expires === 'number') {
+					var expires = new Date();
+					expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+					attributes.expires = expires;
+				}
+
+				try {
+					result = JSON.stringify(value);
+					if (/^[\{\[]/.test(result)) {
+						value = result;
+					}
+				} catch (e) {}
+
+				if (!converter.write) {
+					value = encodeURIComponent(String(value))
+						.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+				} else {
+					value = converter.write(value, key);
+				}
+
+				key = encodeURIComponent(String(key));
+				key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+				key = key.replace(/[\(\)]/g, escape);
+
+				return (document.cookie = [
+					key, '=', value,
+					attributes.expires ? '; expires=' + attributes.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+					attributes.path ? '; path=' + attributes.path : '',
+					attributes.domain ? '; domain=' + attributes.domain : '',
+					attributes.secure ? '; secure' : ''
+				].join(''));
+			}
+
+			// Read
+
+			if (!key) {
+				result = {};
+			}
+
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all. Also prevents odd result when
+			// calling "get()"
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var rdecode = /(%[0-9A-Z]{2})+/g;
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = parts[0].replace(rdecode, decodeURIComponent);
+					cookie = converter.read ?
+						converter.read(cookie, name) : converter(cookie, name) ||
+						cookie.replace(rdecode, decodeURIComponent);
+
+					if (this.json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					if (key === name) {
+						result = cookie;
+						break;
+					}
+
+					if (!key) {
+						result[name] = cookie;
+					}
+				} catch (e) {}
+			}
+
+			return result;
+		}
+
+		api.set = api;
+		api.get = function (key) {
+			return api.call(api, key);
+		};
+		api.getJSON = function () {
+			return api.apply({
+				json: true
+			}, [].slice.call(arguments));
+		};
+		api.defaults = {};
+
+		api.remove = function (key, attributes) {
+			api(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
+</script>
+  <style>
+  .cdn-error-view {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: white;
+    z-index: 9999;
+    font-family: "Whitney SSm A", "Whitney SSm B", "Avenir", "Segoe UI", "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  .cdn-error-view .error-box-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .cdn-error-view .error-icon {
+    text-align: center;
+  }
+  .cdn-error-view .error-title {
+    font-size: 48px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+  .cdn-error-view .error-message {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+  .cdn-error-view .btn-wrap {
+    margin-top: 20px;
+  }
+  .cdn-error-view .btn-reload {
+    width: 300px;
+    padding: 10px;
+    border-radius: 3px;
+    border-color: #088837;
+    border-bottom-color: #007827;
+    border-width: 1px;
+    border-style: solid;
+    color : #FFF;
+    background-color: #2ec866;
+    background-image: -webkit-gradient(linear, top left, bottom left, color-stop(0, #2ec866), color-stop(1, #29b35b));
+    background-image: -webkit-linear-gradient(top, #2ec866, #29b35b);
+    background-image: linear-gradient(top, #2ec866, #29b35b);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1), inset 0 -1px 4px rgba(32, 138, 70, 0.3);
+    outline: none;
+  }
+</style>
+
+
+<script>
+  var cdnLoaded = false;
+
+  var checkForWorkingCDN = (function() {
+    //this two value should come from configuration
+    var cdns = ["hrcdn.net","d3keuzeb2crhkn.cloudfront.net"];
+    var cdnUrl = Cookies.get('cdn_url') || cdns[0];
+    var filePath = "https://hrcdn.net/hackerrank/assets/cdnping-d8824f325f64e103a04a4582006560a7.js";
+
+    //extract pathname from url
+    var urlRegex = /^[^#]*?:\/\/.*?(\/.*)$/ ;
+    var match = filePath.match(urlRegex);
+    if(match) filePath = match[1];
+
+    //add current cdn on first of array
+    cdns.splice(cdns.indexOf(cdnUrl), 1);
+    cdns.unshift(cdnUrl);
+
+    var cdnIndx = 0;
+
+    function tryCurrentCDN() {
+      if (cdnUrl) document.write('<script src="https://' + cdnUrl + filePath + '?' + Date.now() + '"><\/script>');
+      document.write('<script>checkForWorkingCDN();<\/script>');
+    }
+
+    //try the current cdn
+    tryCurrentCDN();
+
+    return function() {
+      if (cdnUrl && cdnLoaded) {
+        Cookies.set('cdn_url', cdnUrl, {expires: 3});
+        Cookies.set('cdn_set', 'true', {expires: 3});
+        if (cdnIndx !== 0) {
+          document.location.reload();
+        }
+
+        //if cdnUrl not loaded check the next cdn;
+      } else if (cdnUrl) {
+        //track all the failed cdn
+        var failedCdns = Cookies.get('failed_cdn_hosts');
+        if (failedCdns) {
+          failedCdns = JSON.parse(failedCdns);
+        } else {
+          failedCdns = [];
+        }
+
+        failedCdns.push(cdnUrl);
+        var fifteenMinuteFromNow = new Date();
+        fifteenMinuteFromNow.setMinutes(15);
+        Cookies.set('failed_cdn_hosts', JSON.stringify(failedCdns), {expires: fifteenMinuteFromNow});
+        Cookies.set("cdn_url_switched", "true", {expires: fifteenMinuteFromNow});
+
+        //try next cdn
+        cdnIndx += 1;
+        cdnUrl = cdns[cdnIndx];
+        tryCurrentCDN();
+
+        //if no cdn left to check and none of loaded return err
+      } else {
+        Cookies.remove('cdn_url');
+        return 'cdnerror';
+      }
+    }
+  }());
+</script><script src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/cdnping-d8824f325f64e103a04a4582006560a7_002.js"></script><script>checkForWorkingCDN();</script><script src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/cdnping-d8824f325f64e103a04a4582006560a7.js"></script><script>checkForWorkingCDN();</script><script>checkForWorkingCDN();</script><script src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/cdnping-d8824f325f64e103a04a4582006560a7_003.js"></script><script>checkForWorkingCDN();</script>
+
+<script>
+  //track cdn related matrices
+  (function() {
+    var allCdns = ["hrcdn.net","d3keuzeb2crhkn.cloudfront.net"];
+
+    var metrics = [];
+    var defaultCdn = Cookies.get('default_cdn_url');
+
+    //method to track the events
+    function appTrack(key, attrs) {
+      attrs = attrs || {};
+      attrs.uid = Cookies.get('hackerrank_mixpanel_token')
+      metrics.push({
+        'key': key,
+        'meta_data': attrs
+      });
+    }
+
+    function sendMetrices() {
+      if (!XMLHttpRequest) return;
+      var xhr = new XMLHttpRequest();
+      var metrics_endpoint = 'https://metrics.hackerrank.com/app_metrics'; // Todo : this need to move on configuration
+
+      if (!xhr) return;
+
+      xhr.open("POST", metrics_endpoint, true);
+
+      //set xhr headers and options
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.withCredentials = true;
+
+      xhr.send(JSON.stringify({
+        data: metrics,
+        default_cdn_url: defaultCdn,
+        document_referrer: document.referrer
+      }));
+    }
+
+    var cdnUrl = Cookies.get('cdn_url');
+    var failedCdns = Cookies.get('failed_cdn_hosts');
+
+    var cdnMetrices = {};
+
+    //track used cdn host
+    if (cdnUrl) {
+      cdnMetrices['used-cdn'] = cdnUrl;
+      cdnMetrices['cdn-index'] = allCdns.indexOf(cdnUrl) + 1;
+      cdnMetrices['all-failed'] = false;
+    //track if all cdn failed (If cdnUrl is not set it means all cdn url failed)
+    } else {
+      cdnMetrices['used-cdn'] = '';
+      cdnMetrices['cdn-index'] = 999;
+      cdnMetrices['all-failed'] = true;
+    }
+
+    appTrack('cdn-metrices', cdnMetrices);
+
+    //track failed cdn
+    if (failedCdns) {
+      failedCdns = JSON.parse(failedCdns);
+      Cookies.remove('failed_cdn_hosts');
+      failedCdns.forEach(function(cdn) {
+        appTrack('failed-cdn-host', {
+          cdn: cdn
+        });
+      });
+    }
+
+    //send metrics
+    sendMetrices();
+
+  }());
+</script>
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="icon" type="image/png" href="https://hrcdn.net/hackerrank/assets/favicon-679803bc95e4e83ded7b9726f98795b2.png">
+
+  <!-- Prefetch / preload dns and assets on production -->
+  
+    <link rel="dns-prefetch" href="https://hrcdn.net/">
+    <link rel="dns-prefetch" href="https://d3keuzeb2crhkn.cloudfront.net/">
+    <link rel="dns-prefetch" href="https://notifications.hackerrank.com/">
+    <link rel="dns-prefetch" href="https://api.mixpanel.com/">
+    <link rel="dns-prefetch" href="https://heapanalytics.com/">
+    <link rel="dns-prefetch" href="https://metrics.hackerrank.com/">
+    <link rel="preconnect" href="https://sentry.io/">
+    <link rel="dns-prefetch" href="https://sentry.io/">
+
+    <!-- Prefetch old assets -->
+    
+      <link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank-ea25ee40710ea64eba5a625f01efdb82.js">
+    
+      <link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/base-6ce2506955bc38544d364c5628a7cf46.js">
+    
+      <link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_libraries-98dea744b3ae35b454e41a097f276d65.js">
+    
+    <!-- Prefetch old assets end-->
+
+    <!-- preload scripts required on the same page -->
+    <link rel="preload" as="script" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_vendor-4966df136c.js">
+    <link rel="preload" as="script" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_common-27f87a97d6303aeff8c0.js">
+    <link rel="preload" as="script" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_app-c82782ffcb1c5c932a5f.js">
+
+    
+      <link rel="preload" as="script" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_community-e8b13deda13c9533154b_002.js">
+    
+      <link rel="preload" as="script" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_challenge-62369df05b7279036344.js">
+    
+    <!-- preload scripts end -->
+
+    <!-- preload font files -->
+    
+    <!-- Preload font file end -->
+
+    <!-- Prefetch old css files -->
+    <link rel="prefetch" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank-core-e96f7a6cfef052d65475f24f3b7f204a.css">
+    <link rel="prefetch" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_libraries-fa8929ae336cf0e420d48cce368af2d0.css">
+
+    
+      <link rel="prefetch" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/dashboard-7a8a1c56a67dc807300c9fc417514ed1.css">
+    
+    <!-- Prefetch old css files end -->
+  
+
+  
+    <link href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_libraries-fa8929ae336cf0e420d48cce368af2d0.css" media="all" rel="stylesheet"><link rel="stylesheet" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_libraries-fa8929ae336cf0e420d48cce368af2d0.css"><link rel="stylesheet" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_libraries-fa8929ae336cf0e420d48cce368af2d0.css">
+
+    <link href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank-core-e96f7a6cfef052d65475f24f3b7f204a.css" media="all" rel="stylesheet">
+
+    
+      <link href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/dashboard-7a8a1c56a67dc807300c9fc417514ed1.css" media="all" rel="stylesheet">
+    
+  
+
+
+  
+
+  <link rel="stylesheet" type="text/css" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_app-ebafff4fbe.css">
+  <link rel="stylesheet" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_community-b949defbb1.css">
+
+  <!-- Load promise polyfill for the non-believers -->
+  <script>
+    window.Promise || document.write('<script src="https://hrcdn.net/hackerrank/assets/promise-polyfill/promise.min-633a04f76540d9de7f7b468be4396133.js" type="text\/javascript"><\/script>');
+  </script>
+
+
+        <style>
+          html.scroll-hidden,html.scroll-hidden body{
+              overflow: hidden;
+              height:100vh;
+          }
+          html.scroll-hidden.pad-adjustment body{
+              padding-right : 17px;
+          }
+          html.scroll-hidden.pad-adjustment .fixed-elm{
+              padding-right : 17px;
+          }
+        </style>
+    <script type="text/javascript" charset="utf-8" async="" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_community-e8b13deda13c9533154b_002.js"></script><script src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/container.js" data-cfasync="false" async="true" defer="true" data-vendor="userty" data-role="container" charset="utf-8"></script><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_challenge_list_v2-f72a64e383fc56d166e1.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_hackerlevel-88d861a9f45caedd4a8b.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_challenge_list-62802914fb34b5fe267d.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_contest-ec25cda400bb8f0d9664.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_dashboardv2-82b16a83230f3ec9069e.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_dashboard-bfe6a789d3d24c1d4a76.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_rank-c263ff63bd2b62c01248.js"><link rel="prefetch" href="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_codeshell_lib-e6962ca44c2864fa175e.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_leaderboard-9d9dcaa7033cf35f29c8.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_jobs-db6c0132fa3e038d764c.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_profile-f5f10e6820aa1bc20764.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_calendar-c94786944cd226558f42.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_code_snippets-c279e3b2cac4c07804ee.js"><link rel="prefetch" href="https://hrcdn.net/hackerrank/assets/hackerrank_r_onboarding-27802227e5ac1c221c4d.js"><script type="text/javascript" charset="utf-8" async="" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_challenge-62369df05b7279036344.js"></script><title>&lt;!--
+ react-text: 3 --&gt; &lt;!-- /react-text --&gt;&lt;!-- react-text: 4 
+--&gt;HackerRank&lt;!-- /react-text --&gt;&lt;!-- react-text: 5 --&gt; 
+&lt;!-- /react-text --&gt;</title><style id="react-tooltip">.__react_component_tooltip{border-radius:3px;display:inline-block;font-size:13px;left:-999em;opacity:0;padding:8px 21px;position:fixed;pointer-events:none;transition:opacity 0.3s ease-out;top:-999em;visibility:hidden;z-index:999}.__react_component_tooltip:before,.__react_component_tooltip:after{content:"";width:0;height:0;position:absolute}.__react_component_tooltip.show{opacity:0.9;margin-top:0px;margin-left:0px;visibility:visible}.__react_component_tooltip.type-dark{color:#fff;background-color:#222}.__react_component_tooltip.type-dark.place-top:after{border-top-color:#222;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-dark.place-bottom:after{border-bottom-color:#222;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-dark.place-left:after{border-left-color:#222;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-dark.place-right:after{border-right-color:#222;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-dark.border{border:1px solid #fff}.__react_component_tooltip.type-dark.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-dark.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-dark.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-dark.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-success{color:#fff;background-color:#8DC572}.__react_component_tooltip.type-success.place-top:after{border-top-color:#8DC572;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-success.place-bottom:after{border-bottom-color:#8DC572;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-success.place-left:after{border-left-color:#8DC572;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-success.place-right:after{border-right-color:#8DC572;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-success.border{border:1px solid #fff}.__react_component_tooltip.type-success.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-success.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-success.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-success.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-warning{color:#fff;background-color:#F0AD4E}.__react_component_tooltip.type-warning.place-top:after{border-top-color:#F0AD4E;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-warning.place-bottom:after{border-bottom-color:#F0AD4E;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-warning.place-left:after{border-left-color:#F0AD4E;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-warning.place-right:after{border-right-color:#F0AD4E;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-warning.border{border:1px solid #fff}.__react_component_tooltip.type-warning.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-warning.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-warning.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-warning.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-error{color:#fff;background-color:#BE6464}.__react_component_tooltip.type-error.place-top:after{border-top-color:#BE6464;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-error.place-bottom:after{border-bottom-color:#BE6464;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-error.place-left:after{border-left-color:#BE6464;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-error.place-right:after{border-right-color:#BE6464;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-error.border{border:1px solid #fff}.__react_component_tooltip.type-error.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-error.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-error.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-error.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-info{color:#fff;background-color:#337AB7}.__react_component_tooltip.type-info.place-top:after{border-top-color:#337AB7;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-info.place-bottom:after{border-bottom-color:#337AB7;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-info.place-left:after{border-left-color:#337AB7;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-info.place-right:after{border-right-color:#337AB7;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-info.border{border:1px solid #fff}.__react_component_tooltip.type-info.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-info.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-info.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-info.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-light{color:#222;background-color:#fff}.__react_component_tooltip.type-light.place-top:after{border-top-color:#fff;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-light.place-bottom:after{border-bottom-color:#fff;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-light.place-left:after{border-left-color:#fff;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-light.place-right:after{border-right-color:#fff;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-light.border{border:1px solid #222}.__react_component_tooltip.type-light.border.place-top:before{border-top:8px solid #222}.__react_component_tooltip.type-light.border.place-bottom:before{border-bottom:8px solid #222}.__react_component_tooltip.type-light.border.place-left:before{border-left:8px solid #222}.__react_component_tooltip.type-light.border.place-right:before{border-right:8px solid #222}.__react_component_tooltip.place-top{margin-top:-10px}.__react_component_tooltip.place-top:before{border-left:10px solid transparent;border-right:10px solid transparent;bottom:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-top:after{border-left:8px solid transparent;border-right:8px solid transparent;bottom:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-bottom{margin-top:10px}.__react_component_tooltip.place-bottom:before{border-left:10px solid transparent;border-right:10px solid transparent;top:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-bottom:after{border-left:8px solid transparent;border-right:8px solid transparent;top:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-left{margin-left:-10px}.__react_component_tooltip.place-left:before{border-top:6px solid transparent;border-bottom:6px solid transparent;right:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-left:after{border-top:5px solid transparent;border-bottom:5px solid transparent;right:-6px;top:50%;margin-top:-4px}.__react_component_tooltip.place-right{margin-left:10px}.__react_component_tooltip.place-right:before{border-top:6px solid transparent;border-bottom:6px solid transparent;left:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-right:after{border-top:5px solid transparent;border-bottom:5px solid transparent;left:-6px;top:50%;margin-top:-4px}.__react_component_tooltip .multi-line{display:block;padding:2px 0px;text-align:center}</style><script type="text/javascript" charset="utf-8" async="" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_codeshell_lib-e6962ca44c2864fa175e.js"></script><script src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/codemirror_basic-bffb4505db599846f31efa96739b4605.js" async=""></script><script src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/clike-e8a662bb29372d98371ad2d9a65ee349.js" async=""></script><script data-cfasync="false" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.userty.com/235-hackerrankcomcommunity/feedback/userty.feedback.js?v=0.1.9" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/userty_002.js"></script><script data-cfasync="false" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.userty.com/235-hackerrankcomcommunity/record/userty.record.js?v=0.1.9" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/userty_004.js"></script><script data-cfasync="false" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.userty.com/235-hackerrankcomcommunity/visualEditorLoader/userty.visualeditorloader.js?v=0.1.9" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/userty_008.js"></script><script data-cfasync="false" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.userty.com/235-hackerrankcomcommunity/core/userty.api.js?v=0.1.9" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/userty_003.js"></script><script data-cfasync="false" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.userty.com/235-hackerrankcomcommunity/core/userty.utils.js?v=0.1.9" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/userty_005.js"></script><script data-cfasync="false" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.userty.com/235-hackerrankcomcommunity/core/userty.behavior.js?v=0.1.9" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/userty_006.js"></script><script data-cfasync="false" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.userty.com/235-hackerrankcomcommunity/feedback/userty.templates.default.js?v=0.1.9" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/userty.js"></script><script data-cfasync="false" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.userty.com/235-hackerrankcomcommunity/core/userty.m.js?v=0.1.9" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/userty_007.js"></script>
+        <style>
+          html.scroll-hidden,html.scroll-hidden body{
+              overflow: hidden;
+              height:100vh;
+          }
+          html.scroll-hidden.pad-adjustment body{
+              padding-right : 12px;
+          }
+          html.scroll-hidden.pad-adjustment .fixed-elm{
+              padding-right : 12px;
+          }
+        </style>
+    <script type="text/javascript" charset="utf-8" async="" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_community-e8b13deda13c9533154b.js"></script></head>
+<body id="hr_v2">
+  <div class="cdn-error-view" style="display:none;">
+  <div class="error-box-wrap">
+    <div class="error-icon">
+      <svg x="0px" y="0px" width="80px" height="80px" viewBox="0 0 367.011 367.01" style="enable-background:new 0 0 367.011 367.01;" xml:space="preserve">
+        <g>
+         <g>
+          <path d="M365.221,329.641L190.943,27.788c-1.542-2.674-4.395-4.318-7.479-4.318c-3.084,0-5.938,1.645-7.48,4.318L1.157,330.584    c-1.543,2.674-1.543,5.965,0,8.639c1.542,2.674,4.395,4.318,7.48,4.318h349.65c0.028,0,0.057,0,0.086,0    c4.77,0,8.638-3.863,8.638-8.639C367.011,332.92,366.342,331.1,365.221,329.641z M23.599,326.266L183.464,49.381l159.864,276.885    H23.599z"></path>
+          <path d="M174.826,136.801v123.893c0,4.773,3.867,8.638,8.638,8.638c4.77,0,8.637-3.863,8.637-8.638V136.801    c0-4.766-3.867-8.637-8.637-8.637C178.693,128.165,174.826,132.036,174.826,136.801z"></path>
+          <path d="M183.464,279.393c-5.922,0-10.725,4.8-10.725,10.722s4.803,10.729,10.725,10.729c5.921,0,10.725-4.809,10.725-10.729    C194.189,284.193,189.386,279.393,183.464,279.393z"></path>
+         </g>
+        </g>
+      </svg>
+    </div>
+    <h2 class="error-title">Something went wrong!</h2>
+    <p class="error-message">Some error occured while loading page for you. Please try again.</p>
+    <div class="btn-wrap">
+      <a href="#" onclick="window.location.reload(true);"><button class="btn-reload">Reload</button></a>
+    </div>
+  </div>
+</div>
+<script>
+  if(typeof cdnLoaded !== 'undefined' && cdnLoaded === false){
+    document.querySelector('.cdn-error-view').style.display = 'block';
+  }
+</script>
+
+  <div id="fb-root"></div>
+  
+
+  <!-- Just a placeholder div to start loading open sans and source code loader -->
+  <div class="font-open-sans-loader"></div>
+  <div class="font-source-code-loader"></div>
+  <!-- Just a placeholder div to start loading open sans and source code loader end -->
+
+  <div id="content" onclick="void(0);"><div class="body-wrap  community-page challenges-page problem-page" data-reactroot="" data-reactid="1" data-react-checksum="2041880109"><div class="toast-message loading" data-reactid="2"><span class="toast-container containment" data-reactid="3"><i class="ui-icon-loading" data-reactid="4"></i><span class="toast-text" data-reactid="5">Loading...</span></span></div><!-- react-empty: 6 --><div class="component-wrapper" data-reactid="7"><!-- react-empty: 8 --><div class="logged-user" data-reactid="9"><div class="page-header-wrapper" data-reactid="10"><nav class="page-header" data-reactid="11"><div class="container" data-reactid="12"><div class="nav-links header-nav-links" data-reactid="13"><ul class="pull-left nav-links-active" data-reactid="14"><li data-reactid="15"><a class="nav_link backbone logo_mark js_logo_mark" data-analytics="NavBarLogo" href="https://www.hackerrank.com/dashboard" data-reactid="16"><img id="feed-intro" src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/h_mark_sm-30dc0e0cbd2dded63b294819ff853a90.svg" alt="" data-reactid="17"></a></li><li data-reactid="18"><a class="nav_link dashboard active" data-analytics="NavBarDomains" href="https://www.hackerrank.com/dashboard" data-reactid="19"><i class="icon-home" data-reactid="20"></i><span data-reactid="21">Practice</span></a></li><li data-reactid="22"><a class="nav_link backbone contests" data-analytics="NavBarContests" href="https://www.hackerrank.com/contests" data-reactid="23"><i class="icon-clock" data-reactid="24"></i><span data-reactid="25">Compete</span></a></li><li data-reactid="26"><a class="nav_link backbone" data-analytics="NavBarJobs" href="https://www.hackerrank.com/jobs" data-reactid="27"><i class="icon-briefcase" data-reactid="28"></i><span data-reactid="29">Jobs</span><i class="icon-circle js-jobs-notification navigation-highlight-icon hidden" data-reactid="30"></i></a></li><li data-reactid="31"><a class="nav_link backbone" data-analytics="NavBarLeaderboard" id="leaderboard-nav-link" href="https://www.hackerrank.com/leaderboard" data-reactid="32"><i class="icon-trophy" data-reactid="33"></i><span data-reactid="34">Leaderboard</span></a></li></ul></div><div class="nav-buttons" data-reactid="35"><ul class="pull-left psR" data-reactid="36"><li class="hide-in-private-contest search-input-container input-icon main-hr-search" id="search-span" data-reactid="37"><div class="search_form" data-reactid="38"><div class="hide-in-private-contest search-input input-icon" data-reactid="39"><div class="search-query asyn-autocomplete autocomplete" data-reactid="40"><div class="ac-input-wrap cf" data-reactid="41"><input autocomplete="off" class="ac-input " data-reactid="42"></div></div><i class="icon-search" data-reactid="43"></i></div></div></li></ul><ul class="pull-left nav-wrap mmL" data-reactid="44"><li class="hide-in-private-contest button-item" data-reactid="45"><div class="dropdown dropdown message-dropdown notify_dropdown" data-reactid="46"><a class="cursor dropdown-handle nav_link hr_nav_messages_link js-dropdown-toggle js-link" data-analytics="NavBarMessageIcon" data-reactid="47"><i class="dropdown-icon icon-chat icon--single" data-reactid="48"></i></a><div class="dropdown-menu large" data-reactid="49"><header class="psT psB text-center menu-header" data-reactid="50"><strong class="header-title" data-reactid="51">Messages</strong></header><div id="notify_messages" class="dropdown-body" data-reactid="52"><div class="hr_nav_messages_list" data-reactid="53"><div class="no-propagation text-center txt-navy empty-msg" data-reactid="54">You have no unread messages.</div></div></div><footer class="final text-center show-all" data-reactid="55"><a class="btn show-all-link" href="https://www.hackerrank.com/inbox" data-analytics="NavBarMessageShowAll" data-reactid="56">Show All</a></footer></div></div></li><li class="button-item" data-reactid="57"><div class="dropdown dropdown notification-dropdown notify_dropdown" data-reactid="58"><a class="cursor dropdown-handle nav_link hr_nav_notifications_link js-dropdown-toggle js-link" data-toggle="dropdown" data-analytics="NavBarNotificationsIcon" data-reactid="59"><i class="dropdown-icon icon-megaphone icon--single" data-reactid="60"></i></a><div class="dropdown-menu large" id="notify_broadcasts" data-reactid="61"><header class="psA menu-header" data-reactid="62"><strong class="header-title" data-reactid="63">Notifications</strong><a class="hr_archive_all archive pull-right js-link" data-analytics="NavBarNotificationsArchiveAll" data-reactid="64"><i class="icon-folder-open" data-reactid="65"></i><!-- react-text: 66 -->Archive All<!-- /react-text --></a></header><div class="clearfix dropdown-body" data-reactid="67"><div class="hr_nav_notifications_list"><ul><li class="notify_item dropdown-item" data-id="56916361" data-category="special-announcement" data-url="https://research.hackerrank.com/developer-skills/2018/"><div class="notification-icon"><img src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/notifymarker.png"></div><div class="notification-subject pmT"><div class="psA"><div>Introducing the 2018 Developer Skills Report</div><small class="meta"><time class="time-text" datetime="2018-01-23T15:21:16.000Z" title="2018-01-23 15:21">1 month ago</time></small></div></div></li><li class="notify_item dropdown-item" data-id="50171468" data-category="contest-announcements" data-url="/domains/tutorials/30-days-of-code"><div class="notification-icon"><img src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/notifymarker.png"></div><div class="notification-subject pmT"><div class="psA"><div>Improve your coding skills. Join our 30 Days of Code challenge!</div><small class="meta"><time class="time-text" datetime="2017-11-09T16:05:40.000Z" title="2017-11-09 16:05">4 months ago</time></small></div></div></li></ul></div></div><footer class="final show-all" data-reactid="71"><a class="btn show-all-link" href="https://www.hackerrank.com/notifications" data-analytics="NavBarNotificationsShowAll" data-reactid="72">Show All</a></footer></div></div></li><li class="button-item" data-reactid="73"><div class="dropdown dropdown dropdown-auth profile-menu cursor" data-reactid="74"><a class="backbone nav_link js-dropdown-toggle js-link toggle-wrap" data-analytics="NavBarProfileDropDown" data-reactid="75"><img src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/gravatar.jpg" alt="" class="avatar" data-reactid="76"><span class="mmR username text-ellipsis" data-reactid="77">a_plasencia</span><i class="icon-down-open" data-reactid="78"></i></a><div class="dropdown-menu drop-list pull-right" data-reactid="79"><ul data-reactid="80"><li class="hide-in-private-contest profile-nav-item" data-reactid="81"><a class="navigation_hackos hackos-count" data-analytics="NavBarProfileDropDownHackos" href="https://www.hackerrank.com/a_plasencia/hackos" data-reactid="82"><!-- react-text: 83 -->Hackos: <!-- /react-text --><span class="navigation_hackos-count" data-reactid="84">121</span></a></li><li class="hide-in-private-contest profile-nav-item" data-reactid="85"><a class="backbone" rel="tooltip" data-placement="left" data-analytics="NavBarProfileDropDownProfile" href="https://www.hackerrank.com/a_plasencia" data-reactid="86"><!-- react-text: 87 -->Profile<!-- /react-text --><div class="ui-progress-bar progress-bar theme-default" data-reactid="88"><div class="progress-filler" style="width:30%;" data-reactid="89"></div></div></a></li><li class="hide-in-private-contest profile-nav-item" data-reactid="90"><a class="backbone" href="https://www.hackerrank.com/settings/profile" data-analytics="NavBarProfileDropDownSettings" data-reactid="91">Settings</a></li><li class="hide-in-private-contest profile-nav-item" data-reactid="92"><a class="backbone" href="https://www.hackerrank.com/challenges/bookmarks" data-analytics="NavBarDropDownBookmarks" data-reactid="93">Saved Challenges</a></li><li class="hide-in-private-contest profile-nav-item" data-reactid="94"><a class="backbone" href="https://www.hackerrank.com/network" data-analytics="NavBarProfileDropDownNetwork" data-reactid="95">Network</a></li><li class="hide-in-private-contest profile-nav-item" data-reactid="96"><a class="backbone" href="https://www.hackerrank.com/submissions" data-analytics="NavBarProfileDropDownSubmissions" data-reactid="97">Submissions</a></li><li class="hide-in-private-contest profile-nav-item" data-reactid="98"><a class="backbone" href="https://www.hackerrank.com/administration" data-analytics="NavBarProfileDropDownAdministration" data-reactid="99">Administration</a></li><li class="profile-nav-item" data-reactid="100"><a class="logout-button js-link" data-analytics="NavBarProfileDropDownLogout" data-reactid="101">Logout</a></li></ul></div></div></li></ul></div></div></nav></div><div id="verifyaccount" class="container" data-reactid="102"><div class="gradient mlT" data-reactid="103"><div class="close close-verification psT psR" data-reactid="104">×</div><div class="message text-center" data-reactid="105"><p class="msB" data-reactid="106">The
+ email address you signed up with has not been verified. You won't be 
+ranked on the leaderboard until you verify your account.</p><p style="font-size:13px;" class="action-message" data-reactid="107"><a class="send-verification btn btn-white" data-reactid="108">Re-send the verification email</a></p></div></div></div><div id="breadcrumb" data-reactid="109"><div class="content-header b4" data-reactid="110"><div class="container pjL" data-reactid="111"><div class="d-flex justify-content-between align-items-center" data-reactid="112"><ol itemtype="http://schema.org/BreadcrumbList" class="mdT msB pjT bcrumb" data-reactid="113"><li itemprop="itemListElement" itemtype="http://schema.org/ListItem" data-reactid="114"><a itemprop="item" class="backbone" data-analytics="Breadcrumb" data-attr1="Dashboard" data-attr2="global" data-attr7="1" href="https://www.hackerrank.com/dashboard" data-reactid="115"><span itemprop="name" data-reactid="116">Dashboard</span></a><meta itemprop="position" content="1" data-reactid="117"></li><li itemprop="itemListElement" itemtype="http://schema.org/ListItem" data-reactid="118"><i class="icon-right-open mmL" data-reactid="119"></i><a itemprop="item" class="backbone" data-analytics="Breadcrumb" data-attr1="Algorithms" data-attr2="global" data-attr7="1" href="https://www.hackerrank.com/domains/algorithms" data-reactid="120"><span itemprop="name" data-reactid="121">Algorithms</span></a><meta itemprop="position" content="1" data-reactid="122"></li><li itemprop="itemListElement" itemtype="http://schema.org/ListItem" data-reactid="123"><i class="icon-right-open mmL" data-reactid="124"></i><a itemprop="item" class="backbone" data-analytics="Breadcrumb" data-attr1="Graph Theory" data-attr2="global" data-attr7="1" href="https://www.hackerrank.com/domains/algorithms/graph-theory" data-reactid="125"><span itemprop="name" data-reactid="126">Graph Theory</span></a><meta itemprop="position" content="1" data-reactid="127"></li><li itemprop="itemListElement" itemtype="http://schema.org/ListItem" data-reactid="128"><i class="icon-right-open mmL" data-reactid="129"></i><a itemprop="item" class="backbone" data-analytics="Breadcrumb" data-attr1="Snakes and Ladders: The Quickest Way Up" data-attr2="global" data-attr7="1" href="https://www.hackerrank.com/challenges/the-quickest-way-up" data-reactid="130"><span itemprop="name" data-reactid="131">Snakes and Ladders: The Quickest Way Up</span></a><meta itemprop="position" content="1" data-reactid="132"></li></ol><div class="domain-scores d-flex align-items-center"><div class="badge-progress"><div id="badge-progress" class="mlR js-tooltip "><p class="bold small"><!-- react-text: 330 -->Badge Progress<!-- /react-text --><a rel="tooltip" class="js-details mmL xsmall details-tooltip cursor" data-html="true" data-tip="Earn 150 more points in &lt;strong&gt;Algorithms&lt;/strong&gt;&lt;br&gt;Earn more points in following sub-domain(s)&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Graph Theory&lt;/strong&gt;: 20 pts&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Dynamic Programming&lt;/strong&gt;: 20 pts&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;Sorting&lt;/strong&gt;: 20 pts&lt;br&gt;" data-place="bottom" data-analytics="BadgeProgress" currentitem="false">(Details)</a></p><div class="progress-wrapper-domains msT"><span class="progress-bar-domains" style="width: 0%;"></span></div><div class="__react_component_tooltip place-top type-dark " data-id="tooltip"></div></div></div><div class="brcumb-points"><span class="zeta bold">Points: </span><span class="bold domain-score msR">0</span><span class="domain-rank-span"><span class="zeta bold">Rank: </span><span class="bold msR domain-rank ">1122582</span></span></div></div></div></div></div></div><div class="container" data-reactid="134"></div><div class="challenge-view" data-reactid="135"><div class="challenge-header" data-reactid="136"><!-- react-empty: 137 --><div class="container" data-reactid="138"><div class="mdT mmB span10" data-reactid="139"><div class="clearfix" data-reactid="140"><h2 class="hr_tour-challenge-name pull-left mlT" data-reactid="141"><!-- react-text: 142 -->Snakes and Ladders: The Quickest Way Up<!-- /react-text --><i class="icon-bookmark js-bookmark xxsmall txt-grey" data-reactid="143"></i></h2></div><div class="clearfix mlB mmT" data-reactid="144"><img src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/150x150.png" class="avatar pull-left" data-reactid="145" width="25" height="25"><span class="small bold" data-reactid="146"><!-- react-text: 147 -->by <!-- /react-text --><a class="backbone color-blue" href="https://www.hackerrank.com/idlecool" data-analytics="ChallengeViewHeaderAuthor" data-attr1="the-quickest-way-up" data-attr2="idlecool" data-reactid="148">idlecool</a></span></div></div></div><div class="container" data-reactid="149"><ul class="nav-tabs nav mlT" data-reactid="150"><li id="problemTab" class="active" data-reactid="151"><a class="hr-problem-link" data-analytics="ChallengeViewTab" data-attr1="/challenges/the-quickest-way-up/problem" data-attr2="Problem" href="https://www.hackerrank.com/challenges/the-quickest-way-up/problem" data-reactid="152">Problem</a></li><li id="submissionsTab" class="" data-reactid="153"><a class="hr-submissions-link" data-analytics="ChallengeViewTab" data-attr1="/challenges/the-quickest-way-up/submissions" data-attr2="Submissions" href="https://www.hackerrank.com/challenges/the-quickest-way-up/submissions" data-reactid="154">Submissions</a></li><li id="leaderboardTab" class="" data-reactid="155"><a class="hr-leaderboard-link" data-analytics="ChallengeViewTab" data-attr1="/challenges/the-quickest-way-up/leaderboard" data-attr2="Leaderboard" href="https://www.hackerrank.com/challenges/the-quickest-way-up/leaderboard" data-reactid="156">Leaderboard</a></li><li id="forumTab" class="" data-reactid="157"><a class="hr-forum-link" data-analytics="ChallengeViewTab" data-attr1="/challenges/the-quickest-way-up/forum" data-attr2="Discussions" href="https://www.hackerrank.com/challenges/the-quickest-way-up/forum" data-reactid="158">Discussions</a></li><li id="editorialTab" class="" data-reactid="159"><a class="hr-editorial-link" data-analytics="ChallengeViewTab" data-attr1="/challenges/the-quickest-way-up/editorial" data-attr2="Editorial" href="https://www.hackerrank.com/challenges/the-quickest-way-up/editorial" data-reactid="160"><!-- react-text: 161 -->Editorial <!-- /react-text --><i class="icon-lock" data-reactid="162"></i></a></li></ul></div></div><section class="challenge-interface challenge-problem" data-reactid="163"><div class="challenge-body" data-reactid="164"><div class="challenge-body-elements-problem challenge-container-element" data-reactid="165"><div class="challenge-split full-screen-split split-wrap" data-reactid="166"><div class="left-pane split" data-reactid="167"><div class="challenge-content" data-reactid="168"><div class="container fs-container" data-reactid="169"><div class="row" data-reactid="170"><div class="span-sm-11 hr_tour-problem-statement problem-statement have-external-links" data-reactid="171"><div class="content-text challenge-text mlB" data-reactid="172"><div class="challenge_problem_statement"><div class="msB challenge_problem_statement_body"><div class="hackdown-content"><style id="MathJax_SVG_styles">.MathJax_SVG_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax_SVG .MJX-monospace {font-family: monospace}
+.MathJax_SVG .MJX-sans-serif {font-family: sans-serif}
+.MathJax_SVG {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax_SVG * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.mjx-svg-href {fill: blue; stroke: blue}
+</style><svg style="display: none;"><defs id="MathJax_SVG_glyphs"></defs></svg><p>Markov takes out his <a href="http://en.wikipedia.org/wiki/Snakes_and_Ladders">Snakes and Ladders</a>
+ game and stares at the board, and wonders: If he had absolute control 
+on the die (singular), and could get it to generate any number (in the 
+range <span style="font-size: 100%; display: inline-block;" class="MathJax_SVG" id="MathJax-Element-1-Frame"><svg xlink="http://www.w3.org/1999/xlink" width="5.165ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 2223.9 936.9" role="img" focusable="false"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><g transform="translate(722,0)"><path stroke-width="1" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g transform="translate(1723,0)"><path stroke-width="1" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path></g></g></svg></span>)
+ he desired, what would be the least number of rolls of the die in which
+ he'd be able to reach the destination square (Square Number <span style="font-size: 100%; display: inline-block;" class="MathJax_SVG" id="MathJax-Element-2-Frame"><svg xlink="http://www.w3.org/1999/xlink" width="3.487ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 1501.5 936.9" role="img" focusable="false"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="1" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"></path><path stroke-width="1" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(1001,0)"></path></g></svg></span>) after having started at the base square (Square Number <span style="font-size: 100%; display: inline-block;" class="MathJax_SVG" id="MathJax-Element-3-Frame"><svg xlink="http://www.w3.org/1999/xlink" width="1.162ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 500.5 936.9" role="img" focusable="false"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></svg></span>)? </p>
+
+<p><strong>Rules</strong></p>
+
+<ol>
+<li><p>Markov has total control over the die and the face which shows up
+ every time he tosses it. You need to help him figure out the minimum 
+number of moves in which he can reach the target square (100) after 
+starting at the base (Square 1).</p></li>
+<li><p>A die roll which would cause the player to land up at a square 
+greater than 100, goes wasted, and the player remains at his original 
+square. Such as a case when the player is at Square Number 99, rolls the
+ die, and ends up with a 5.</p></li>
+<li><p>If a person reaches a square which is the base of a ladder, (s)he
+ has to climb up that ladder, and he cannot come down on it. If a person
+ reaches a square which has the mouth of the snake, (s)he has to go down
+ the snake and come out through the tail - there is no way to climb down
+ a ladder or to go up through a snake.</p></li>
+</ol>
+
+<p><strong>Constraints</strong></p>
+
+<p>The board is always of the size <span style="font-size: 100%; display: inline-block;" class="MathJax_SVG" id="MathJax-Element-4-Frame"><svg xlink="http://www.w3.org/1999/xlink" width="7.49ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 3224.9 936.9" role="img" focusable="false"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="1" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"></path><g transform="translate(1223,0)"><path stroke-width="1" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path></g><g transform="translate(2223,0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="1" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"></path></g></g></svg></span> and Squares are always numbered <span style="font-size: 100%; display: inline-block;" class="MathJax_SVG" id="MathJax-Element-5-Frame"><svg xlink="http://www.w3.org/1999/xlink" width="1.162ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 500.5 936.9" role="img" focusable="false"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g></svg></span> to <span style="font-size: 100%; display: inline-block;" class="MathJax_SVG" id="MathJax-Element-6-Frame"><svg xlink="http://www.w3.org/1999/xlink" width="3.487ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 1501.5 936.9" role="img" focusable="false"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="1" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"></path><path stroke-width="1" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(1001,0)"></path></g></svg></span>.  </p>
+
+<p><span style="font-size: 100%; display: inline-block;" class="MathJax_SVG" id="MathJax-Element-7-Frame"><svg xlink="http://www.w3.org/1999/xlink" width="14.937ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 6431.1 936.9" role="img" focusable="false"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><g transform="translate(778,0)"><path stroke-width="1" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"></path><path stroke-width="1" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" transform="translate(778,0)"></path></g><g transform="translate(2613,0)"><path stroke-width="1" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path></g><g transform="translate(3595,0)"><path stroke-width="1" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"></path><path stroke-width="1" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" transform="translate(778,0)"></path></g><g transform="translate(5430,0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="1" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"></path></g></g></svg></span> <br>
+<span style="font-size: 100%; display: inline-block;" class="MathJax_SVG" id="MathJax-Element-8-Frame"><svg xlink="http://www.w3.org/1999/xlink" width="32.605ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 14038.1 936.9" role="img" focusable="false"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><g transform="translate(778,0)"><path stroke-width="1" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"></path><path stroke-width="1" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" transform="translate(778,0)"></path></g><g transform="translate(2613,0)"><path stroke-width="1" d="M42 46Q74 48 94 56T118 69T128 86V634H124Q114 637 52 637H25V683H232L235 680Q237 679 322 554T493 303L578 178V598Q572 608 568 613T544 627T492 637H475V683H483Q498 680 600 680Q706 680 715 683H724V637H707Q634 633 622 598L621 302V6L614 0H600Q585 0 582 3T481 150T282 443T171 605V345L172 86Q183 50 257 46H274V0H265Q250 3 150 3Q48 3 33 0H25V46H42Z"></path><path stroke-width="1" d="M383 58Q327 -10 256 -10H249Q124 -10 105 89Q104 96 103 226Q102 335 102 348T96 369Q86 385 36 385H25V408Q25 431 27 431L38 432Q48 433 67 434T105 436Q122 437 142 438T172 441T184 442H187V261Q188 77 190 64Q193 49 204 40Q224 26 264 26Q290 26 311 35T343 58T363 90T375 120T379 144Q379 145 379 161T380 201T380 248V315Q380 361 370 372T320 385H302V431Q304 431 378 436T457 442H464V264Q464 84 465 81Q468 61 479 55T524 46H542V0Q540 0 467 -5T390 -11H383V58Z" transform="translate(750,0)"></path><path stroke-width="1" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z" transform="translate(1307,0)"></path><path stroke-width="1" d="M307 -11Q234 -11 168 55L158 37Q156 34 153 28T147 17T143 10L138 1L118 0H98V298Q98 599 97 603Q94 622 83 628T38 637H20V660Q20 683 22 683L32 684Q42 685 61 686T98 688Q115 689 135 690T165 693T176 694H179V543Q179 391 180 391L183 394Q186 397 192 401T207 411T228 421T254 431T286 439T323 442Q401 442 461 379T522 216Q522 115 458 52T307 -11ZM182 98Q182 97 187 90T196 79T206 67T218 55T233 44T250 35T271 29T295 26Q330 26 363 46T412 113Q424 148 424 212Q424 287 412 323Q385 405 300 405Q270 405 239 390T188 347L182 339V98Z" transform="translate(2140,0)"></path><path stroke-width="1" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z" transform="translate(2697,0)"></path><path stroke-width="1" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z" transform="translate(3141,0)"></path><path stroke-width="1" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z" transform="translate(3784,0)"></path><path stroke-width="1" d="M273 0Q255 3 146 3Q43 3 34 0H26V46H42Q70 46 91 49Q99 52 103 60Q104 62 104 224V385H33V431H104V497L105 564L107 574Q126 639 171 668T266 704Q267 704 275 704T289 705Q330 702 351 679T372 627Q372 604 358 590T321 576T284 590T270 627Q270 647 288 667H284Q280 668 273 668Q245 668 223 647T189 592Q183 572 182 497V431H293V385H185V225Q185 63 186 61T189 57T194 54T199 51T206 49T213 48T222 47T231 47T241 46T251 46H282V0H273Z" transform="translate(4284,0)"></path><path stroke-width="1" d="M128 622Q121 629 117 631T101 634T58 637H25V683H36Q48 680 182 680Q324 680 348 683H360V637H333Q273 637 258 635T233 622L232 342V129Q232 57 237 52Q243 47 313 47Q384 47 410 53Q470 70 498 110T536 221Q536 226 537 238T540 261T542 272T562 273H582V268Q580 265 568 137T554 5V0H25V46H58Q100 47 109 49T128 61V622Z" transform="translate(4841,0)"></path><path stroke-width="1" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z" transform="translate(5466,0)"></path><path stroke-width="1" d="M376 495Q376 511 376 535T377 568Q377 613 367 624T316 637H298V660Q298 683 300 683L310 684Q320 685 339 686T376 688Q393 689 413 690T443 693T454 694H457V390Q457 84 458 81Q461 61 472 55T517 46H535V0Q533 0 459 -5T380 -11H373V44L365 37Q307 -11 235 -11Q158 -11 96 50T34 215Q34 315 97 378T244 442Q319 442 376 393V495ZM373 342Q328 405 260 405Q211 405 173 369Q146 341 139 305T131 211Q131 155 138 120T173 59Q203 26 251 26Q322 26 373 103V342Z" transform="translate(5967,0)"></path><path stroke-width="1" d="M376 495Q376 511 376 535T377 568Q377 613 367 624T316 637H298V660Q298 683 300 683L310 684Q320 685 339 686T376 688Q393 689 413 690T443 693T454 694H457V390Q457 84 458 81Q461 61 472 55T517 46H535V0Q533 0 459 -5T380 -11H373V44L365 37Q307 -11 235 -11Q158 -11 96 50T34 215Q34 315 97 378T244 442Q319 442 376 393V495ZM373 342Q328 405 260 405Q211 405 173 369Q146 341 139 305T131 211Q131 155 138 120T173 59Q203 26 251 26Q322 26 373 103V342Z" transform="translate(6523,0)"></path><path stroke-width="1" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z" transform="translate(7080,0)"></path><path stroke-width="1" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z" transform="translate(7524,0)"></path><path stroke-width="1" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z" transform="translate(7917,0)"></path></g><g transform="translate(11202,0)"><path stroke-width="1" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"></path><path stroke-width="1" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" transform="translate(778,0)"></path></g><g transform="translate(13037,0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="1" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z" transform="translate(500,0)"></path></g></g></svg></span> <br>
+<span style="font-size: 100%; display: inline-block;" class="MathJax_SVG" id="MathJax-Element-9-Frame"><svg xlink="http://www.w3.org/1999/xlink" width="31.468ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 13548.6 936.9" role="img" focusable="false"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><g transform="translate(778,0)"><path stroke-width="1" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"></path><path stroke-width="1" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" transform="translate(778,0)"></path></g><g transform="translate(2613,0)"><path stroke-width="1" d="M42 46Q74 48 94 56T118 69T128 86V634H124Q114 637 52 637H25V683H232L235 680Q237 679 322 554T493 303L578 178V598Q572 608 568 613T544 627T492 637H475V683H483Q498 680 600 680Q706 680 715 683H724V637H707Q634 633 622 598L621 302V6L614 0H600Q585 0 582 3T481 150T282 443T171 605V345L172 86Q183 50 257 46H274V0H265Q250 3 150 3Q48 3 33 0H25V46H42Z"></path><path stroke-width="1" d="M383 58Q327 -10 256 -10H249Q124 -10 105 89Q104 96 103 226Q102 335 102 348T96 369Q86 385 36 385H25V408Q25 431 27 431L38 432Q48 433 67 434T105 436Q122 437 142 438T172 441T184 442H187V261Q188 77 190 64Q193 49 204 40Q224 26 264 26Q290 26 311 35T343 58T363 90T375 120T379 144Q379 145 379 161T380 201T380 248V315Q380 361 370 372T320 385H302V431Q304 431 378 436T457 442H464V264Q464 84 465 81Q468 61 479 55T524 46H542V0Q540 0 467 -5T390 -11H383V58Z" transform="translate(750,0)"></path><path stroke-width="1" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z" transform="translate(1307,0)"></path><path stroke-width="1" d="M307 -11Q234 -11 168 55L158 37Q156 34 153 28T147 17T143 10L138 1L118 0H98V298Q98 599 97 603Q94 622 83 628T38 637H20V660Q20 683 22 683L32 684Q42 685 61 686T98 688Q115 689 135 690T165 693T176 694H179V543Q179 391 180 391L183 394Q186 397 192 401T207 411T228 421T254 431T286 439T323 442Q401 442 461 379T522 216Q522 115 458 52T307 -11ZM182 98Q182 97 187 90T196 79T206 67T218 55T233 44T250 35T271 29T295 26Q330 26 363 46T412 113Q424 148 424 212Q424 287 412 323Q385 405 300 405Q270 405 239 390T188 347L182 339V98Z" transform="translate(2140,0)"></path><path stroke-width="1" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z" transform="translate(2697,0)"></path><path stroke-width="1" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z" transform="translate(3141,0)"></path><path stroke-width="1" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z" transform="translate(3784,0)"></path><path stroke-width="1" d="M273 0Q255 3 146 3Q43 3 34 0H26V46H42Q70 46 91 49Q99 52 103 60Q104 62 104 224V385H33V431H104V497L105 564L107 574Q126 639 171 668T266 704Q267 704 275 704T289 705Q330 702 351 679T372 627Q372 604 358 590T321 576T284 590T270 627Q270 647 288 667H284Q280 668 273 668Q245 668 223 647T189 592Q183 572 182 497V431H293V385H185V225Q185 63 186 61T189 57T194 54T199 51T206 49T213 48T222 47T231 47T241 46T251 46H282V0H273Z" transform="translate(4284,0)"></path><path stroke-width="1" d="M55 507Q55 590 112 647T243 704H257Q342 704 405 641L426 672Q431 679 436 687T446 700L449 704Q450 704 453 704T459 705H463Q466 705 472 699V462L466 456H448Q437 456 435 459T430 479Q413 605 329 646Q292 662 254 662Q201 662 168 626T135 542Q135 508 152 480T200 435Q210 431 286 412T370 389Q427 367 463 314T500 191Q500 110 448 45T301 -21Q245 -21 201 -4T140 27L122 41Q118 36 107 21T87 -7T78 -21Q76 -22 68 -22H64Q61 -22 55 -16V101Q55 220 56 222Q58 227 76 227H89Q95 221 95 214Q95 182 105 151T139 90T205 42T305 24Q352 24 386 62T420 155Q420 198 398 233T340 281Q284 295 266 300Q261 301 239 306T206 314T174 325T141 343T112 367T85 402Q55 451 55 507Z" transform="translate(4841,0)"></path><path stroke-width="1" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z" transform="translate(5397,0)"></path><path stroke-width="1" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z" transform="translate(5954,0)"></path><path stroke-width="1" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T97 124T98 167T98 217T98 272T98 329Q98 366 98 407T98 482T98 542T97 586T97 603Q94 622 83 628T38 637H20V660Q20 683 22 683L32 684Q42 685 61 686T98 688Q115 689 135 690T165 693T176 694H179V463L180 233L240 287Q300 341 304 347Q310 356 310 364Q310 383 289 385H284V431H293Q308 428 412 428Q475 428 484 431H489V385H476Q407 380 360 341Q286 278 286 274Q286 273 349 181T420 79Q434 60 451 53T500 46H511V0H505Q496 3 418 3Q322 3 307 0H299V46H306Q330 48 330 65Q330 72 326 79Q323 84 276 153T228 222L176 176V120V84Q176 65 178 59T189 49Q210 46 238 46H254V0H246Q231 3 137 3T28 0H20V46H36Z" transform="translate(6454,0)"></path><path stroke-width="1" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z" transform="translate(6983,0)"></path><path stroke-width="1" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z" transform="translate(7427,0)"></path></g><g transform="translate(10712,0)"><path stroke-width="1" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"></path><path stroke-width="1" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z" transform="translate(778,0)"></path></g><g transform="translate(12547,0)"><path stroke-width="1" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="1" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z" transform="translate(500,0)"></path></g></g></svg></span>   </p>
+
+<p>Square number 1 and 100 will not be the starting point of a ladder or a snake. <br>
+No square will have more than one of the starting or ending point of a 
+snake or ladder (e.g. snake 56 to 44 and ladder 44 to 97 is not possible
+ because 44 has both ending of a snake and a starting of a ladder)   </p></div></div></div><div class="challenge_input_format"><div class="msB challenge_input_format_title"><p><strong>Input Format</strong></p></div><div class="msB challenge_input_format_body"><div class="hackdown-content"><style id="MathJax_SVG_styles">.MathJax_SVG_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax_SVG .MJX-monospace {font-family: monospace}
+.MathJax_SVG .MJX-sans-serif {font-family: sans-serif}
+.MathJax_SVG {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax_SVG * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.mjx-svg-href {fill: blue; stroke: blue}
+</style><svg style="display: none;"><defs id="MathJax_SVG_glyphs"></defs></svg><p>The first line contains the number of tests, T. T testcases follow.  </p>
+
+<p>For each testcase, the first line contain N(Number of ladders) and 
+after that N line follow. Each of the N line contain 2 integer 
+representing the starting point and the ending point of a ladder 
+respectively.</p>
+
+<p>The next line contain integer M(Number of snakes) and after that M 
+line follow. Each of the M line contain 2 integer representing the 
+starting point and the ending point of a snake respectively.</p></div></div></div><div class="challenge_output_format"><div class="msB challenge_output_format_title"><p><strong>Output Format</strong></p></div><div class="msB challenge_output_format_body"><div class="hackdown-content"><style id="MathJax_SVG_styles">.MathJax_SVG_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax_SVG .MJX-monospace {font-family: monospace}
+.MathJax_SVG .MJX-sans-serif {font-family: sans-serif}
+.MathJax_SVG {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax_SVG * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.mjx-svg-href {fill: blue; stroke: blue}
+</style><svg style="display: none;"><defs id="MathJax_SVG_glyphs"></defs></svg><p>For
+ each of the T test cases, output one integer, each in a new line, which
+ is the least number of moves (or rolls of the die) in which the player 
+can reach the target square (Square Number 100) after starting at the 
+base (Square Number 1). This corresponds to the ideal sequence of faces 
+which show up when the die is rolled. <br>
+ If there is no solution, print <code>-1</code>. </p></div></div></div><div class="challenge_sample_input"><div class="msB challenge_sample_input_title"><p><strong>Sample Input</strong></p></div><div class="msB challenge_sample_input_body"><div class="hackdown-content"><style id="MathJax_SVG_styles">.MathJax_SVG_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax_SVG .MJX-monospace {font-family: monospace}
+.MathJax_SVG .MJX-sans-serif {font-family: sans-serif}
+.MathJax_SVG {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax_SVG * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.mjx-svg-href {fill: blue; stroke: blue}
+</style><svg style="display: none;"><defs id="MathJax_SVG_glyphs"></defs></svg><pre><code>2
+3
+32 62
+42 68
+12 98
+7
+95 13
+97 25
+93 37
+79 27
+75 19
+49 47
+67 17
+4
+8 52
+6 80
+26 42
+2 72
+9
+51 19
+39 11
+37 29
+81 3
+59 5
+79 23
+53 7
+43 33
+77 21 
+</code></pre></div></div></div><div class="challenge_sample_output"><div class="msB challenge_sample_output_title"><p><strong>Sample Output</strong></p></div><div class="msB challenge_sample_output_body"><div class="hackdown-content"><style id="MathJax_SVG_styles">.MathJax_SVG_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax_SVG .MJX-monospace {font-family: monospace}
+.MathJax_SVG .MJX-sans-serif {font-family: sans-serif}
+.MathJax_SVG {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax_SVG * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.mjx-svg-href {fill: blue; stroke: blue}
+</style><svg style="display: none;"><defs id="MathJax_SVG_glyphs"></defs></svg><pre><code>3
+5
+</code></pre></div></div></div><div class="challenge_explanation"><div class="msB challenge_explanation_title"><p><strong>Explanation</strong></p></div><div class="msB challenge_explanation_body"><div class="hackdown-content"><style id="MathJax_SVG_styles">.MathJax_SVG_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax_SVG .MJX-monospace {font-family: monospace}
+.MathJax_SVG .MJX-sans-serif {font-family: sans-serif}
+.MathJax_SVG {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax_SVG * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.mjx-svg-href {fill: blue; stroke: blue}
+</style><svg style="display: none;"><defs id="MathJax_SVG_glyphs"></defs></svg><p><em>For the first test:</em>
+To traverse the board via the shortest route, the player first rolls the
+ die to get a 5, and ends up at square 6. He then rolls the die to get 
+6. He ends up at square 12, from where he climbs the ladder to square 
+98. He then rolls the die to get '2', and ends up at square 100, which 
+is the target square. So, the player required 3 rolls of the die for 
+this shortest and best case scenario. So the answer for the first test 
+is 3. </p></div></div></div></div></div><div data-reactid="173"><aside class="span-sm-4 mlB mjT pull-right fullscreen-hide challenge-sidebar" data-reactid="174"><div class="info" data-reactid="175"><div class="mjB small difficulty-wrapper" data-reactid="176"><div data-reactid="177"><span class="difficulty" data-reactid="178">Medium</span></div><div class="difficulty-divider" data-reactid="179"><span style="display:block;" data-reactid="180"><!-- react-text: 181 -->Submitted <!-- /react-text --><!-- react-text: 182 -->12844<!-- /react-text --><!-- react-text: 183 --> times<!-- /react-text --></span><span style="display:block;" data-reactid="184"><!-- react-text: 185 -->Max Score <!-- /react-text --><strong data-reactid="186">50</strong></span></div></div><p class="mlB" data-reactid="187"><strong data-reactid="188">Need Help?</strong></p><div class="mlB options-border" data-reactid="189"><div class="row psT options-padding-left" data-reactid="190"><div class="span-sm-15 options-padding options-border-bottom" data-reactid="191"><div class="span-sm-3" data-reactid="192"><img src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/sidebar_discuss-29ac47c3aeffee3966a1c29b07b60f2e.png" data-reactid="193"></div><div class="span-sm-12" data-reactid="194"><a data-analytics="ChallengeSidebarUI" data-attr1="discussions" data-attr2="the-quickest-way-up" data-attr3="master" href="https://www.hackerrank.com/challenges/the-quickest-way-up/forum" data-reactid="195"><strong data-reactid="196">View Discussions</strong></a></div></div></div><div class="row psT options-padding-left" data-reactid="197"><div class="span-sm-15 options-padding options-border-bottom" data-reactid="198"><div class="span-sm-3" data-reactid="199"><img src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/sidebar_discuss-29ac47c3aeffee3966a1c29b07b60f2e.png" data-reactid="200"></div><div class="span-sm-12" data-reactid="201"><a data-analytics="ChallengeSidebarUI" data-attr1="editorial" data-attr2="the-quickest-way-up" data-attr3="master" href="https://www.hackerrank.com/challenges/the-quickest-way-up/editorial" data-reactid="202"><strong data-reactid="203">View Editorial Solution</strong></a></div></div></div><div class="row psT options-padding-left" data-reactid="204"><div class="span-sm-15 options-padding" data-reactid="205"><div class="span-sm-3" data-reactid="206"><img src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/sidebar_topscorers-5a8e7857617b4ef1688f82823c7f90a8.png" data-reactid="207"></div><div class="span-sm-12" data-reactid="208"><a data-analytics="ChallengeSidebarUI" data-attr1="topscorers" data-attr2="the-quickest-way-up" data-attr3="master" href="https://www.hackerrank.com/challenges/the-quickest-way-up/leaderboard" data-reactid="209"><strong data-reactid="210">View Top Submissions</strong></a></div></div></div></div><div class="challenge-rating rating" data-reactid="211"><p class="bold zeta rating-label" data-reactid="212">Rate This Challenge: </p><div class="rating" data-reactid="213"><i class="icon cursor icon-star-empty" data-analytics="RatedChallenge" data-attr7="1" data-reactid="214"></i><i class="icon cursor icon-star-empty" data-analytics="RatedChallenge" data-attr7="2" data-reactid="215"></i><i class="icon cursor icon-star-empty" data-analytics="RatedChallenge" data-attr7="3" data-reactid="216"></i><i class="icon cursor icon-star-empty" data-analytics="RatedChallenge" data-attr7="4" data-reactid="217"></i><i class="icon cursor icon-star-empty" data-analytics="RatedChallenge" data-attr7="5" data-reactid="218"></i></div></div><div id="sidebar-more-options" data-reactid="219"><div class="mlB mlT" data-reactid="220"><a target="_blank" id="pdf-link" data-analytics="ChallengeViewSidebarPDF" data-attr1="the-quickest-way-up" href="https://www.hackerrank.com/rest/contests/master/challenges/the-quickest-way-up/download_pdf?language=English" data-reactid="221">Download problem statement</a></div><div class="mlB" data-reactid="222"><a target="_blank" id="test-cases-link" data-analytics="ChallengeViewSidebarTestCases" data-attr1="the-quickest-way-up" href="https://www.hackerrank.com/rest/contests/master/challenges/the-quickest-way-up/download_testcases" data-reactid="223">Download sample test cases</a></div><div class="fullscreen-hide" data-reactid="224"><a class="link" data-analytics="ChallengeViewSuggestEdit" data-attr1="the-quickest-way-up" data-reactid="225"><!-- react-text: 226 -->Suggest Edits<!-- /react-text --></a></div><div class="language-selector pjT" data-reactid="227"><div class="psT hide small color-alt-grey" id="preference-msg" data-reactid="228"><a class="language-preference btn btn-small msB" data-reactid="229">Set as default</a><br data-reactid="230"><p class="mjB" data-reactid="231">You can always change back later.</p></div></div></div><div class="social-share-wrap-2" data-reactid="232"><div class="clearfix" data-reactid="233"><div class="social-share-view-wrap social-buttons mjT pull-left" data-reactid="234"><a class="social-btn cursor facebook-share-btn txt-white" data-reactid="235"><i class="icon-facebook" data-reactid="236"></i></a><a class="social-btn cursor twitter-share-btn txt-white txt-white" data-reactid="237"><i class="icon-twitter" data-reactid="238"></i></a><a class="social-btn cursor linkedin-share-btn txt-white" data-reactid="239"><i class="icon-linkedin" data-reactid="240"></i></a></div></div></div></div></aside></div></div></div></div></div><div class="right-pane split" data-reactid="241"><div class="challenge-request" data-reactid="242"><div class="challenge-input codeeditor-wrapper container fs-container mlB" data-reactid="243"><div data-reactid="244"><div class="codeeditor-view" data-reactid="245"><div id="codeshell-wrapper" data-reactid="246">
+<div class="clearfix grey-header fixed-hand0 cap plL plR psT psB" style="position: relative;">
+  <div class="msT pull-left"><em id="status-text"></em></div>
+  
+  <div class="fork-dialog cs-dialog hide">
+    <div class="header">Fork <span class="version-seq"></span>
+        <i data-analytics="CodeShellForkCode" data-attr1="Cancel" class="icon--single icon-cancel-small close-fork-dialog cursor-pointer pull-right psR"></i>
+    </div>
+    <div class="body">
+      <p class="grey-msg">past buffers are marked read only, you wont be able to edit your current buffer without forking it</p>
+      <div class="m msT">
+        <button data-analytics="CodeShellForkCode" data-attr1="ForkCurrentBuffer" class="btn btn-primary fork-version" data-action="fork">Fork <span class="version-seq"></span></button>&nbsp;&nbsp;
+        <button data-analytics="CodeShellForkCode" data-attr1="CreateNewBuffer" class="btn btn-primary fork-version" data-action="orphan">Create New Buffer</button>
+      </div>
+    </div>
+  </div>
+  <div class="fork-limit-reached-dialog cs-dialog hide">
+    <div class="header">Fork Limit Reached</div>
+    <div class="body">
+      <p class="grey-msg">You can’t create more than 20 buffers, please delete one of your old bufferes to create a new buffer.</p>
+      <div class="m msT">
+        <button class="btn close-fork-limit-reached-dialog">OK</button>&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+  <div class="delete-version-dialog cs-dialog hide">
+    <div class="header">Delete <span class="version-seq"></span></div>
+    <div class="body">
+      <p class="grey-msg">Are you sure you want to delete <strong><span class="version-seq"></span></strong>? This action can’t be undone.</p>
+      <div class="m msT">
+        <button class="btn delete-version-button">Yes</button>&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+  <div class="pull-left no-select">
+    <p style="padding-top: 8px;">
+      <strong class="version-name">Current Buffer</strong>
+      <span class="gray-text version-meta">(saved locally, editable)</span>
+      &nbsp;&nbsp;
+      <a data-analytics="CodeShellShowForkOptions" class="fork-this-version"><i class="icon--grey cursor icon-flow-branch"></i></a>
+      <a data-analytics="CodeShellShowVersionTimeline" class="show-version-timeline"><i class="icon--grey cursor icon-back-in-time"></i></a>
+      <a class="delete-active-version hide"><i class="icon--grey cursor icon-trash"></i></a>
+    </p>
+  </div>
+  
+  
+  <div class="pull-right">
+    
+    <div class="inline large lines inverse pull-right msT msL">
+      
+      
+      <a class="restorefullscreen force-hide active-link no-select">
+          <i class="icon-resize-small-alt icon--grey no-select"></i></a>
+      <a class="fullscreen active-link no-select" data-analytics="Switch to fullscreen"><i class="icon-resize-full-alt icon--grey no-select"></i></a>
+      
+      
+      <a class="hide" style="display:none;"></a>
+      <div class="settings-editor" style="position:relative; margin-left: 0px;">
+        <a class="cursor no-select" data-analytics="CodeShellShowPreferences" id="show-preferences"><i class="icon-cog icon--grey no-select"></i></a>
+        <div id="pref-pane" style="position: absolute;right: -0.5em;top: 2em;z-index: 9;background: #fff;border: 1px solid #ddd;border-radius: 5px;padding: 10px;  width: 20em; display: none;">
+          <div style="position: absolute;width: 0;right: 0.8em;height: 0;border-left: 7px solid transparent;border-right: 7px solid transparent;border-bottom: 7px solid #ddd;top: -0.4em;"></div>
+          
+            <div class="formgroup horizontal">
+              <label class="span5">Editor Mode</label>
+              <div class="inline">
+                <div class="btn-group no-select">
+                  <a data-analytics="CodeShellEditorMode" data-attr1="Emacs" class="cursor emacs btn btn-small btn-white editor-mode-button no-select" data-editor="emacs">Emacs</a>
+                  <a data-analytics="CodeShellEditorMode" data-attr1="Normal" class="cursor default btn btn-small btn-white editor-mode-button no-select btn-primary" data-editor="sublime">Normal</a>
+                  <a data-analytics="CodeShellEditorMode" data-attr1="Vim" class="cursor vim btn btn-small btn-white editor-mode-button no-select" data-editor="vim">Vim</a>
+                </div>
+              </div>
+            </div>
+          
+          
+            <div class="formgroup horizontal">
+              <label class="span5">Editor Theme</label>
+              <div class="inline">
+                <div class="btn-group no-select">
+                  <a data-analytics="CodeShellEditorTheme" data-attr1="Light" class="cursor light btn btn-small btn-white editor-theme-button no-select btn-primary" data-editor="light">Light</a>
+                  <a data-analytics="CodeShellEditorTheme" data-attr1="Dark" class="cursor dark btn btn-small btn-white editor-theme-button no-select" data-editor="dark">Dark</a>
+                </div>
+              </div>
+            </div>
+          
+          <div class="formgroup horizontal">
+            <label class="span5">Tab Spaces</label>
+            <div class="inline">
+              <div class="btn-group no-select">
+                <a data-analytics="CodeShellEditorSpace" data-attr1="2" class="cursor 2space btn btn-small btn-white editor-tabspace-button no-select" data-editor="2">2 spaces</a>
+                <a data-analytics="CodeShellEditorSpace" data-attr1="4" class="cursor 4space  btn btn-small btn-white editor-tabspace-button no-select btn-primary" data-editor="4">4 spaces</a>
+                <a data-analytics="CodeShellEditorSpace" data-attr1="8" class="cursor 8space btn btn-small btn-white editor-tabspace-button no-select" data-editor="8">8 spaces</a>
+              </div>
+            </div>
+          </div>
+          
+            <div class="formgroup horizontal">
+              <label class="span5">Intellisense</label>
+              <div class="inline">
+                <div class="btn-group no-select">
+                  <a data-analytics="CodeShellAutoComplete" data-attr1="Enable" class="cursor emacs btn btn-small btn-white editor-autocomplete-button no-select btn-primary" data-editor="true">Enable</a>
+                  <a data-analytics="CodeShellAutoComplete" data-attr1="Disable" class="cursor default btn btn-small btn-white editor-autocomplete-button no-select" data-editor="false">Disable</a>
+                </div>
+              </div>
+            </div>
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="pull-right lang-placeholder">
+      <div class="dummy-lang-container hide"></div>
+      <div class="select2-container" id="s2id_select-lang"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span>C++</span><abbr class="select2-search-choice-close"></abbr>   <div><b></b></div></a><input class="select2-focusser select2-offscreen" id="s2id_autogen1" type="text"><div class="select2-drop select2-display-none">   <div class="select2-search select2-search-hidden select2-offscreen">       <input autocomplete="off" autocorrect="off" autocapitilize="off" spellcheck="false" class="select2-input" type="text">   </div>   <ul class="select2-results">   </ul></div></div><input id="select-lang" tabindex="-1" class="select2-offscreen" value="cpp" type="hidden">
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+
+<div class="version-timeline">
+  <div class="version-timeline-inner">
+    <div class="cross-line"></div>
+    <div class="start-slab pull-left"></div>
+    
+    <div class="current-version-ball green-bkg pull-left cursor"></div>
+  </div>
+</div>
+<div class="hr_tour-code-solution movable-hand flex-row" style="display: flex;">
+  
+  <div class="code-checker">
+    <div id="notification-message" class="clearfix grey-header cap  hidden "> </div>
+    <div class="code-editors" style="max-height: 810px;">
+      
+       <div class="loading-mode" style="display: none;">Loading Editor... </div> 
+      <div class="code-body" style="display: block;">
+        
+       <textarea id="codeview" style="width: 100%; display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 44px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; outline: medium none currentcolor;" autocorrect="off" autocapitalize="none" spellcheck="false" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true" style="bottom: 0px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 39px; margin-bottom: -17px; border-right-width: 13px; min-height: 698px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: medium none currentcolor;" role="presentation"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>34</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 20.2833px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;" class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -39px; width: 39px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 9px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-meta">#include &lt;bits/stdc++.h&gt;</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">using</span> <span class="cm-keyword">namespace</span> <span class="cm-def">std</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 9px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-type">int</span> <span class="cm-def">quickestWayUp</span>(<span class="cm-variable">vector</span> <span class="cm-operator">&lt;</span> <span class="cm-variable">vector</span><span class="cm-operator">&lt;</span><span class="cm-type">int</span><span class="cm-operator">&gt;</span> <span class="cm-operator">&gt;</span> <span class="cm-variable">ladders</span>, <span class="cm-variable">vector</span> <span class="cm-operator">&lt;</span> <span class="cm-variable">vector</span><span class="cm-operator">&lt;</span><span class="cm-type">int</span><span class="cm-operator">&gt;</span> <span class="cm-operator">&gt;</span> <span class="cm-variable">snakes</span>) {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-comment">// Complete this function</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 9px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-type">int</span> <span class="cm-def">main</span>() {</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-type">int</span> <span class="cm-variable">t</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-variable">cin</span> <span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">t</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 9px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">for</span>(<span class="cm-type">int</span> <span class="cm-variable">a0</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable">a0</span> <span class="cm-operator">&lt;</span> <span class="cm-variable">t</span>; <span class="cm-variable">a0</span><span class="cm-operator">++</span>){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-type">int</span> <span class="cm-variable">n</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-variable">cin</span> <span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">n</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-variable">vector</span><span class="cm-operator">&lt;</span> <span class="cm-variable">vector</span><span class="cm-operator">&lt;</span><span class="cm-type">int</span><span class="cm-operator">&gt;</span> <span class="cm-operator">&gt;</span> <span class="cm-variable">ladders</span>(<span class="cm-variable">n</span>,<span class="cm-variable">vector</span><span class="cm-operator">&lt;</span><span class="cm-type">int</span><span class="cm-operator">&gt;</span>(<span class="cm-number">2</span>));</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">16</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 9px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-keyword">for</span>(<span class="cm-type">int</span> <span class="cm-variable">ladders_i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;<span class="cm-variable">ladders_i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable">n</span>;<span class="cm-variable">ladders_i</span><span class="cm-operator">++</span>){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">17</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 9px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">           <span class="cm-keyword">for</span>(<span class="cm-type">int</span> <span class="cm-variable">ladders_j</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;<span class="cm-variable">ladders_j</span> <span class="cm-operator">&lt;</span> <span class="cm-number">2</span>;<span class="cm-variable">ladders_j</span><span class="cm-operator">++</span>){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">18</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 9px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">              <span class="cm-variable">cin</span> <span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">ladders</span>[<span class="cm-variable">ladders_i</span>][<span class="cm-variable">ladders_j</span>];</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">           }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">21</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-type">int</span> <span class="cm-variable">m</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">22</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-variable">cin</span> <span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">m</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">23</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-variable">vector</span><span class="cm-operator">&lt;</span> <span class="cm-variable">vector</span><span class="cm-operator">&lt;</span><span class="cm-type">int</span><span class="cm-operator">&gt;</span> <span class="cm-operator">&gt;</span> <span class="cm-variable">snakes</span>(<span class="cm-variable">m</span>,<span class="cm-variable">vector</span><span class="cm-operator">&lt;</span><span class="cm-type">int</span><span class="cm-operator">&gt;</span>(<span class="cm-number">2</span>));</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">24</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 9px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-keyword">for</span>(<span class="cm-type">int</span> <span class="cm-variable">snakes_i</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;<span class="cm-variable">snakes_i</span> <span class="cm-operator">&lt;</span> <span class="cm-variable">m</span>;<span class="cm-variable">snakes_i</span><span class="cm-operator">++</span>){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">25</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 9px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">           <span class="cm-keyword">for</span>(<span class="cm-type">int</span> <span class="cm-variable">snakes_j</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>;<span class="cm-variable">snakes_j</span> <span class="cm-operator">&lt;</span> <span class="cm-number">2</span>;<span class="cm-variable">snakes_j</span><span class="cm-operator">++</span>){</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">26</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 9px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">              <span class="cm-variable">cin</span> <span class="cm-operator">&gt;&gt;</span> <span class="cm-variable">snakes</span>[<span class="cm-variable">snakes_i</span>][<span class="cm-variable">snakes_j</span>];</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">27</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">           }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">28</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">29</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-type">int</span> <span class="cm-variable">result</span> <span class="cm-operator">=</span> <span class="cm-variable">quickestWayUp</span>(<span class="cm-variable">ladders</span>, <span class="cm-variable">snakes</span>);</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">30</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-variable">cout</span> <span class="cm-operator">&lt;&lt;</span> <span class="cm-variable">result</span> <span class="cm-operator">&lt;&lt;</span> <span class="cm-variable">endl</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">31</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    }</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">32</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">return</span> <span class="cm-number">0</span>;</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">33</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -39px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">34</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="">​</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 698px;"></div><div class="CodeMirror-gutters" style="height: 711px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div></div>
+       </div>
+      
+      <div class="clearfix"></div>
+    </div>
+    <div id="codeeditor-statusbar" class="clearfix psA codeeditor_statusbar">
+      <span id="statusbar-mode"></span>
+      <div class="pull-right">
+        <span id="statusbar-line">Line: 1</span>
+        <span id="statusbar-col">Col: 1</span>
+        <span id="statusbar-count"></span>
+      </div>
+    </div>
+  </div>
+</div><div class="clearfix pmR pmL pmB plT fixed-hand1 codeshell-footer">
+  <div class="pull-right">
+    
+    
+    <button class="btn bb-compile msR " data-analytics="Compile and Test">Run Code</button>
+    
+    
+    <button class="btn btn-primary bb-submit ans-submit" data-analytics="Submit Code">Submit Code</button>
+    
+    
+  </div>
+  <div class="pull-left inline">
+      
+      <button class="btn btn-text upload_file mlR" data-analytics="Upload File" type="button"><i class="icon-upload"></i>Upload Code as File</button>
+      
+      
+      
+      <div class="mmT">
+          <label for="customtestcase"><div class="custom-checkbox-v3"><input id="customtestcase" type="checkbox"><span></span></div><span class="lmT msL">Test against custom input</span></label>
+          
+          <textarea rows="5" id="custominput" style="display:none"></textarea>
+          
+      </div>
+      
+  </div>
+  
+</div></div><div id="submission-message" data-reactid="249"></div><!-- react-empty: 250 --><!-- react-empty: 251 --><!-- react-empty: 252 --><div class="__react_component_tooltip place-top type-dark " data-id="tooltip" data-reactid="253"></div></div></div></div></div><div class="challenge-response container fs-container" data-reactid="254"></div></div></div></div></div></section></div><footer class="page_footer community-footer" data-reactid="255"><div data-reactid="256"><div class="text-center" data-reactid="257"><p style="font-size:14px;margin-top:5px;margin-bottom:0px;" data-reactid="258"><span class="internal-links" data-reactid="259"><a target="_blank" href="https://www.hackerrank.com/calendar" class="footer-link calendar" data-analytics="FooterLinkCalendar" data-reactid="260">Contest Calendar</a><span class="divider" data-reactid="261">|</span><a target="_blank" href="https://blog.hackerrank.com/" class="footer-link blog" data-analytics="FooterLinkBlog" data-reactid="262">Blog</a><span class="divider" data-reactid="263">|</span><a target="_blank" href="https://www.hackerrank.com/scoring" class="footer-link scoring" data-analytics="FooterLinkScoring" data-reactid="264">Scoring</a><span class="divider" data-reactid="265">|</span><a target="_blank" href="https://www.hackerrank.com/environment" class="footer-link environment" data-analytics="FooterLinkEnvironment" data-reactid="266">Environment</a><span class="divider" data-reactid="267">|</span><a target="_blank" href="https://www.hackerrank.com/faq" class="footer-link faq" data-analytics="FooterLinkFAQ" data-reactid="268">FAQ</a><span class="divider" data-reactid="269">|</span></span><a target="_blank" href="https://www.hackerrank.com/aboutus" class="footer-link" data-analytics="FooterLinkAboutUs" data-reactid="270">About Us</a><span class="divider" data-reactid="271">|</span><a target="_blank" href="https://help.hackerrank.com/hc/en-us" class="footer-link" data-analytics="FooterLinkSupport" data-reactid="272">Support</a><span class="divider" data-reactid="273">|</span><a target="_blank" href="https://www.hackerrank.com/careers" class="footer-link" data-analytics="FooterLinkCareers" data-reactid="274">Careers</a><span class="divider" data-reactid="275">|</span><a target="_blank" href="https://www.hackerrank.com/terms-of-service" class="footer-link" data-analytics="FooterLinkTermsOfService" data-reactid="276">Terms Of Service</a><span class="divider" data-reactid="277">|</span><a target="_blank" href="https://www.hackerrank.com/privacy" class="footer-link" data-analytics="FooterLinkPrivacyPolicy" data-reactid="278">Privacy Policy</a><span class="divider" data-reactid="279">|</span><a href="https://www.hackerrank.com/support/feature" target="_blank" class="footer-link featureRequestButton" data-analytics="FooterLinkFeatureRequest" data-reactid="280">Request a Feature</a></p></div></div></footer><!-- react-empty: 281 --></div></div></div></div><!--Required to handle event bubbling of click in ios safari -->
+
+  <!-- Vendor scripts -->
+  
+    <script>
+      /*** webpack menifest data ***/
+      var webpackChunkManifest = {"0":"hackerrank_r_community-e8b13deda13c9533154b.js","1":"hackerrank_r_work-5fdf8ed77cbcdc460d6b.js","2":"hackerrank_r_uikit-f5443c4043f2d7ba278b.js","3":"hackerrank_r_app-c82782ffcb1c5c932a5f.js","4":"hackerrank_r_hackerlevel-88d861a9f45caedd4a8b.js","5":"hackerrank_r_code_snippets-c279e3b2cac4c07804ee.js","6":"hackerrank_r_challenge_list_v2-f72a64e383fc56d166e1.js","7":"hackerrank_r_jobs-db6c0132fa3e038d764c.js","8":"hackerrank_r_testinvite-24a81c421c0d56e7f539.js","9":"hackerrank_r_onboarding-27802227e5ac1c221c4d.js","10":"hackerrank_r_library-90772cd9c077b864c901.js","11":"hackerrank_r_charts-2fbe0ccfcd65c2a0e883.js","12":"hackerrank_r_calendar-c94786944cd226558f42.js","13":"hackerrank_r_testquestions-2de7fc46d303a0cd4d1a.js","14":"hackerrank_r_testsettings-d7d52168ead9c7e91d28.js","15":"hackerrank_r_testinsights-633034280a7d21b0c12d.js","16":"hackerrank_r_challenge-62369df05b7279036344.js","17":"hackerrank_r_dashboard-bfe6a789d3d24c1d4a76.js","18":"hackerrank_r_profile-f5f10e6820aa1bc20764.js","19":"hackerrank_r_singletest-11fb3d0c508c57435a37.js","20":"hackerrank_r_testreportslisting-c6fbaf05bfef3532121e.js","21":"hackerrank_r_leaderboard-9d9dcaa7033cf35f29c8.js","22":"hackerrank_r_challenge_list-62802914fb34b5fe267d.js","23":"hackerrank_r_dashboardv2-82b16a83230f3ec9069e.js","24":"hackerrank_r_rank-c263ff63bd2b62c01248.js","25":"hackerrank_r_contest-ec25cda400bb8f0d9664.js","26":"hackerrank_r_codeshell_lib-e6962ca44c2864fa175e.js"};
+      var webpackManifest = {"codeshell_editor_theme_m.css":"codeshell_editor_theme_m-6076207a05.css","hackerrank_r_app.css":"hackerrank_r_app-ebafff4fbe.css","hackerrank_r_community.css":"hackerrank_r_community-b949defbb1.css","hackerrank_r_old_trimmed.css":"hackerrank_r_old_trimmed-3801841774.css","hackerrank_r_uikit.css":"hackerrank_r_uikit-803c6ea899.css","hackerrank_r_work.css":"hackerrank_r_work-f9e5aaeb93.css","hackerrank_r_app.js":"hackerrank_r_app-c82782ffcb1c5c932a5f.js","hackerrank_r_calendar.js":"hackerrank_r_calendar-c94786944cd226558f42.js","hackerrank_r_challenge.js":"hackerrank_r_challenge-62369df05b7279036344.js","hackerrank_r_challenge_list.js":"hackerrank_r_challenge_list-62802914fb34b5fe267d.js","hackerrank_r_challenge_list_v2.js":"hackerrank_r_challenge_list_v2-f72a64e383fc56d166e1.js","hackerrank_r_charts.js":"hackerrank_r_charts-2fbe0ccfcd65c2a0e883.js","hackerrank_r_code_snippets.js":"hackerrank_r_code_snippets-c279e3b2cac4c07804ee.js","hackerrank_r_codeshell_lib.js":"hackerrank_r_codeshell_lib-e6962ca44c2864fa175e.js","hackerrank_r_common.js":"hackerrank_r_common-27f87a97d6303aeff8c0.js","hackerrank_r_community.js":"hackerrank_r_community-e8b13deda13c9533154b.js","hackerrank_r_contest.js":"hackerrank_r_contest-ec25cda400bb8f0d9664.js","hackerrank_r_dashboard.js":"hackerrank_r_dashboard-bfe6a789d3d24c1d4a76.js","hackerrank_r_dashboardv2.js":"hackerrank_r_dashboardv2-82b16a83230f3ec9069e.js","hackerrank_r_hackerlevel.js":"hackerrank_r_hackerlevel-88d861a9f45caedd4a8b.js","hackerrank_r_jobs.js":"hackerrank_r_jobs-db6c0132fa3e038d764c.js","hackerrank_r_leaderboard.js":"hackerrank_r_leaderboard-9d9dcaa7033cf35f29c8.js","hackerrank_r_library.js":"hackerrank_r_library-90772cd9c077b864c901.js","hackerrank_r_onboarding.js":"hackerrank_r_onboarding-27802227e5ac1c221c4d.js","hackerrank_r_profile.js":"hackerrank_r_profile-f5f10e6820aa1bc20764.js","hackerrank_r_rank.js":"hackerrank_r_rank-c263ff63bd2b62c01248.js","hackerrank_r_singletest.js":"hackerrank_r_singletest-11fb3d0c508c57435a37.js","hackerrank_r_testinsights.js":"hackerrank_r_testinsights-633034280a7d21b0c12d.js","hackerrank_r_testinvite.js":"hackerrank_r_testinvite-24a81c421c0d56e7f539.js","hackerrank_r_testquestions.js":"hackerrank_r_testquestions-2de7fc46d303a0cd4d1a.js","hackerrank_r_testreportslisting.js":"hackerrank_r_testreportslisting-c6fbaf05bfef3532121e.js","hackerrank_r_testsettings.js":"hackerrank_r_testsettings-d7d52168ead9c7e91d28.js","hackerrank_r_uikit.js":"hackerrank_r_uikit-f5443c4043f2d7ba278b.js","hackerrank_r_work.js":"hackerrank_r_work-5fdf8ed77cbcdc460d6b.js","hackerrank_r_vendor.js":"hackerrank_r_vendor-4966df136c.js"};
+    </script>
+  
+
+  <script>
+    //HR namespace
+    var HR = {};
+    HR.development = false;
+    HR.assetPath = 'https://hrcdn.net/hackerrank/assets/';
+    HR.pageLoadTime = Date.now();
+    HR.productNamespace = 'hackerrank';
+    HR.production = true;
+    HR.devServer = false;
+    HR.isIsomorphic = true;
+    HR.pusher = '{"key":"a280047e3b323ccb1b65","cluster":"mt1"}';
+  </script>
+
+  <!-- Vendor scripts -->
+  
+    <script src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_vendor-4966df136c.js"></script>
+  
+
+  
+
+  <script src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_common-27f87a97d6303aeff8c0.js"></script>
+  <script src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/hackerrank_r_app-c82782ffcb1c5c932a5f.js"></script>
+  
+<script>
+  var getUser = (function() {
+    var userData;
+    try{
+      if (typeof userData === 'undefined') {
+        userData = JSON.parse(decodeURI($('#initialUserData').html()));
+        $('#initialUserData').remove();
+      }
+    } catch(e){
+      console.log('No initial User data found');
+    }
+    return function() {
+      return userData;
+    }
+  })();
+</script>
+
+<!-- setting up sentry -->
+
+  <script src="Snakes%20and%20Ladders:%20The%20Quickest%20Way%20Up_files/raven.js" async="" crossorigin="anonymous" id="raven"></script>
+  <script>
+    (function(window, queue, loaded, script, productNamespace, user) {
+
+        window.onerror = function e(message, file, lineNo, columnNo, error) {
+            if (loaded) return;
+            queue.push([message, file, lineNo, columnNo, error]);
+        };
+
+        window.onunhandledrejection = function e(error) {
+            if (loaded) return;
+            queue.push([
+                error.reason.reason || error.reason.message,
+                error.type,
+                JSON.stringify(error.reason),
+            ]);
+        };
+
+        script.onreadystatechange = script.onload = function() {
+            if (loaded) return;
+            loaded = true;
+
+            Raven.config('https://6b2d52b23d5a4dd4bc44330335327c04@sentry.io/234162', {
+                release: "1c9503a645a9f26f41569c3bb4b88b817e0c4b27"
+            }).install();
+
+            var setupRaven = function(user) {
+                var userContext = {};
+                if (productNamespace === 'hackerrank' && !!user.username) {
+                    userContext.handle = user.username;
+                } else if (productNamespace === 'hackerrankx' && !!user.email) {
+                    userContext.handle = user.email;
+                }
+                Raven.setUserContext(userContext);
+                Raven.setExtraContext({
+                    cdnUrl: Cookies.get("cdn_url")
+                });
+            }
+
+            setupRaven(user);
+            $(window).on('initializeTracking', function(e, user) {
+                setupRaven(user);
+            });
+
+            window.onunhandledrejection = function e(error) {
+                Raven.captureException(new Error(error.reason.reason || error.reason.message), {
+                    extra: {
+                        type: error.type,
+                        reason: JSON.stringify(error.reason),
+                    },
+                });
+            };
+
+            queue.forEach(function(error) {
+                Raven.captureException(error[4] || new Error(error[0]), {
+                    extra: {
+                        file: error[1],
+                        line: error[2],
+                        col: error[3],
+                    },
+                });
+            });
+        };
+    }(window, [], false, document.getElementById('raven'), HR.productNamespace, getUser()));
+ </script>
+
+
+
+
+<!-- google analytics tracking -->
+<script>
+  var _gaq = _gaq || [];
+  
+  _gaq.push(['candidate_company._setAccount', 'UA-45092266-1']);
+  _gaq.push(['candidate_company._trackPageview']);
+  _gaq.push(['_setCampSourceKey', 'utm_source']);
+  _gaq.push(['_setCampMediumKey', 'utm_medium']);
+  _gaq.push(['_setCampContentKey', 'utm_keyword']);
+  _gaq.push(['_setCampTermKey', 'utm_keyword']);
+  _gaq.push(['_setCampNameKey', 'utm_campaign']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  
+</script>
+<!-- Pending candidate site custom GA code -->
+<!-- google analytics tracking end-->
+
+<!-- mixpanel tracking -->
+<script type="text/javascript">
+  
+    (function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+    mixpanel.init("bcb75af88bccc92724ac5fd79271e1ff");
+
+    
+      
+        mixpanel.init("86cf4681911d3ff600208fdc823c5ff5", {}, "jobs_test");
+      
+      mixpanel.identify(Cookies.get("hackerrank_mixpanel_token"));
+    
+  
+</script>
+<!-- mixpanel tracking end-->
+
+<!-- auryc tracking start -->
+<script type="text/javascript">
+  
+    function aurycProps(user) {
+      if(HR.productNamespace === 'hackerrankx') {
+        userProps = {
+          email: user.email,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          user_id: user.id,
+          user_role: user.role,
+          company: user.company.name,
+          company_id: user.company.id,
+          plan_name: user.company.plan_name
+        }
+      } else if(HR.productNamespace === 'hackerrank') {
+        userProps = {
+          email: user.email,
+          username: user.username,
+          user_id: user.id
+        }
+      }
+      return userProps;
+    }
+
+    setupAuryc = function(user) {
+      hackerrankAurycSrc = "//cdn.userty.com/207-hackerrankcom/container.js";
+      hackerrankxAurycSrc = "//cdn.userty.com/235-hackerrankcomcommunity/container.js";
+
+      if(HR.productNamespace === 'hackerrankx') {
+        if (!(user && user.company && [25227, 4357, 70014].indexOf(user.company_id) > -1)) return;
+        src = hackerrankAurycSrc;
+      } else if(HR.productNamespace === 'hackerrank') {
+        if (!(user && user.username)) return;
+        src = hackerrankxAurycSrc;
+      }
+
+      ;(function (g) { g.aurycReadyCb = g.aurycReadyCb || []; var d = document, i, am = d.createElement("script"), h = d.head || d.getElementsByTagName("head")[0],aex = { "src": src, "data-cfasync": "false", "async": "true", "defer": "true", "data-vendor": "userty", "data-role": "container", "charset": "utf-8" }; for (var attr in aex) { am.setAttribute(attr,aex[attr]); } h.appendChild(am); })(window);
+      userProps = aurycProps(user);
+
+      if (window.auryc) {
+        window.auryc.identify(user.email);
+        window.auryc.addUserProperties(userProps);
+      } else if (window.aurycReadyCb) {
+        window.aurycReadyCb.push(function() {
+          window.auryc.identify(user.email);
+          window.auryc.addUserProperties(userProps);
+        });
+      }
+    }
+    setupAuryc(getUser());
+    $(window).on('initializeTracking', function(e, user) {
+      setupAuryc(user);
+    });
+  
+</script>
+<!-- auryc tracking end -->
+
+<!-- HeapAnalytics tracking start -->
+<script type="text/javascript">
+  
+    var heap = [];
+    var attrs = ["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"];
+    for (var attribute in attrs) {
+      heap[attrs[attribute]] = function () {};
+    }
+  
+</script>
+<!-- HeapAnalytics tracking end -->
+
+<!-- Marketo to be added later -->
+
+<!-- Olark start -->
+
+<!-- Olark end -->
+
+<!-- Bizible -->
+
+<!-- HR metrics init -->
+<script type="text/javascript">
+
+  (function() {
+    hr_metrics.init({
+      product: 'hackerrank',
+      use_cookie: true,
+      uid_cookie_key: 'hackerrank_mixpanel_token',
+      uid_token_cookie_key: 'metrics_user_identifier',
+      session_cookie_key: 'session_id',
+      metrics_endpoint:  'https://metrics.hackerrank.com/metrics' 
+    });
+  })();
+
+
+
+
+</script>
+
+<!-- hrutm_params -->
+
+<!-- HR metrics extension pack -->
+<script type="text/javascript">
+
+  
+    if (('performance' in window) && ('timing' in window.performance)) {
+      $(window).on("load", function() {
+        setTimeout(function(){
+          var timing = window.performance.timing;
+          var obj = {
+            referring_url: window.location.pathname,
+            fullLoadTime: timing.loadEventEnd - timing.navigationStart,
+            // Total time from req start to load
+            loadTime: timing.loadEventEnd - timing.fetchStart,
+            // Time spent constructing the DOM tree
+            domReadyTime: timing.domComplete - timing.domInteractive,
+            // Time consumed preparing the new page
+            readyStart: timing.fetchStart - timing.navigationStart,
+            // Time spent during redirection
+            redirectTime: timing.redirectEnd - timing.redirectStart,
+            // AppCache
+            appcacheTime: timing.domainLookupStart - timing.fetchStart,
+            // Time spent unloading documents
+            unloadEventTime: timing.unloadEventEnd - timing.unloadEventStart,
+            // DNS query time
+            lookupDomainTime: timing.domainLookupEnd - timing.domainLookupStart,
+            // TCP connection time
+            connectTime: timing.connectEnd - timing.connectStart,
+            // Time spent during the request
+            requestTime: timing.responseEnd - timing.requestStart,
+            // Request to completion of the DOM loading
+            initDomTreeTime: timing.domInteractive - timing.responseEnd,
+            // Load event time
+            loadEventTime: timing.loadEventEnd - timing.loadEventStart,
+            // Origin of the request
+            react: true
+          }
+
+          if (('navigation' in window.performance) && ('getEntries' in window.performance)) {
+            obj.navigationType = window.performance.navigation.type;
+            obj.navigationRedirectCount = window.performance.navigation.redirectCount;
+            if (obj.fullLoadTime > 8000) {
+              try {
+                var entries = window.performance.getEntries();
+                if(entries[0].toJSON){
+                  obj.networkRequests = entries.map(function(e) {return e.toJSON();});
+                }
+              } catch (e) {
+                //do nothing
+              }
+            }
+          }
+
+          hr_metrics.app_track('page-load-metrics', obj);
+        }, 1000);
+      });
+    }
+  
+
+  $(window).on("load", function() {
+      var _pathname = document.location.pathname;
+      var cdn_url_switched = Cookies.get("cdn_url_switched");
+      if (cdn_url_switched !== '') {
+        Cookies.remove('cdn_url_switched');
+      }
+      hr_metrics.batch_track('PageLoad', _pathname + document.location.search, {
+          attribute1: _pathname,
+          attribute6: cdn_url_switched,
+          cdn_url: Cookies.get("cdn_url")
+      });
+
+      if (hr_metrics.track_dwell_time) {
+          hr_metrics.track_dwell_time(_pathname);
+          hr_metrics.set_navigation_data();
+      }
+
+      $(window).on('beforeunload', function(){
+
+          var _pathname = document.location.pathname;
+          hr_metrics.batch_track('PageClose', _pathname + document.location.search, {
+              attribute2: _pathname
+          });
+
+          hr_metrics.track_dwell_time(_pathname, true);
+
+          hr_metrics.batch_track_record(true);
+      });
+
+  });
+
+</script>
+
+<!-- Facebook SDK -->
+<!-- Twitter SDK -->
+
+<!-- track button clicks -->
+<script>
+    $(document).on('click', 'a, button, input, select, i, div, span, h5', null, function(e) {
+        var src = e.currentTarget, $src = $(e.currentTarget);
+        if ($src.attr('data-analytics')) {
+            action = 'Click'; data = $src.attr('data-analytics');
+        } else {
+            return;
+        }
+
+        
+          hr_metrics.batch_track(action, data, (function() {
+              var params={};
+              for (var _i=1; _i<=12; ++_i){
+                  var _attr = 'data-attr'+_i;
+                  if ($src.attr(_attr)){
+                    params['attribute'+_i] = $src.attr(_attr);
+                  }
+              }
+              var attributes = src.attributes, attr_length = src.attributes.length;
+              for (var i = 0; i < attr_length; i++){
+                var attribute = attributes[i];
+                if (attribute.name.indexOf('data-attr-') === 0){
+                  param_name = attribute.name.substr('data-attr-'.length);
+                  if (param_name.length > 0) {
+                    params[param_name] = attribute.value;
+                  }
+                }
+              }
+              return params;
+          })());
+        
+
+        
+          // google analytics
+          _gaq.push(['_trackEvent', 'Events' , action, data])
+        
+    });
+
+    $(document).on('AnalyticsEvent', function(e) {
+        action = e.event_type || false;
+        data = e.event_name || false;
+
+        if (!action || !data) {
+          return;
+        }
+
+        params = {}
+        params['attribute1'] = e.event_value || ""
+
+        if (window.HR && window.HR.current_page) {
+          params['attribute2'] = window.HR.current_page;
+        }
+
+        if (window.HR && window.HR.current_contest) {
+          params['attribute3'] = window.HR.current_contest.get('name');
+        }
+
+        
+            hr_metrics.batch_track(action, data, params);
+        
+
+        
+          // google analytics
+          _gaq.push(['_trackEvent', 'Events' , action, data]);
+        
+    });
+
+  </script>
+<!-- track button clicks end-->
+
+<!-- errorception tracking -->
+<script type="text/javascript">
+  
+      var _errs = [];
+    
+ </script>
+
+<!-- Linkedin Insights -->
+
+
+
+
+<div class="portal-wrapper"><div data-reactroot="" target="body"></div></div><div class="portal-wrapper"><div data-reactroot="" target="body"></div></div><div class="portal-wrapper"><div data-reactroot="" target="body"></div></div></body></html>
